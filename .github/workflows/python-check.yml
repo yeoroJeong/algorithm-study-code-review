@@ -1,0 +1,49 @@
+name: Python Syntax Check
+
+on:
+  pull_request:
+    paths:
+      - "**/*.py"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.py"
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import py_compile
+          import sys
+
+          files = list(Path(".").rglob("*.py"))
+          failed = []
+
+          for file in files:
+              try:
+                  py_compile.compile(str(file), doraise=True)
+                  print(f"OK: {file}")
+              except py_compile.PyCompileError as exc:
+                  failed.append((file, exc))
+
+          if failed:
+              for file, exc in failed:
+                  print(f"FAIL: {file}\n{exc}", file=sys.stderr)
+              raise SystemExit(1)
+
+          print(f"Checked {len(files)} Python file(s).")
+          PY
