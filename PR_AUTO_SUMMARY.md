@@ -32,7 +32,7 @@
 GitHub Actions가 변경된 경로를 분석해 PR 댓글로 자동 작성합니다.
 
 ```text
-solutions/week01/YeoroJeong/SWEA_1954/solution.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
 ```
 
 위 파일을 추가하면 다음처럼 인식합니다.

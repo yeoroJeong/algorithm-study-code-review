@@ -32,16 +32,16 @@ problems/week01/week.yml
 기본 규칙은 다음과 같습니다.
 
 ```text
-problems/weekXX/문제폴더/GitHub아이디.확장자
+problems/weekXX/문제폴더/개인폴더/자유로운파일명.확장자
 ```
 
 예시:
 
 ```text
-problems/week01/SWEA_1954/yeoroJeong.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
 ```
 
-위 파일이 존재하면 `yeoroJeong`의 1954번 문제 제출 상태가 `✅`로 표시됩니다.
+위 파일이 존재하면 `YeoroJeong`의 1954번 문제 제출 상태가 `✅`로 표시됩니다.
 
 지원 확장자는 `week.yml`의 `submission.extensions`에서 바꿀 수 있습니다.
 
@@ -51,9 +51,10 @@ problems/week01/SWEA_1954/yeoroJeong.py
 
 ```yaml
 members:
-  - id: yeoroJeong
+  - folder: YeoroJeong
     name: 정현수
-  - id: memberA
+    github: yeoroJeong
+  - folder: MemberA
     name: 스터디원A
 
 problems:
@@ -66,7 +67,7 @@ problems:
     url: "문제 링크"
 ```
 
-`id`는 제출 파일명과 일치해야 합니다.
+`folder`는 문제 폴더 아래 생성되는 개인 폴더명과 일치해야 합니다.
 
 ## 4. 로컬에서 미리 실행
 
@@ -99,7 +100,7 @@ git push -u origin chore/readme-automation
 PR 제목:
 
 ```text
-[설정] 주차별 README 자동화 추가
+[CHORE] 주차별 README 자동화 추가
 ```
 
 리뷰 후 `main`으로 병합합니다.
@@ -161,7 +162,7 @@ GitHub 저장소 → Actions → Update Week READMEs → Run workflow
 주간 풀이 PR은 풀이 목록을 본문에 직접 작성하지 않습니다. 다음 경로를 기준으로 Actions가 주차, 작성자, 문제, 언어를 자동 분석합니다.
 
 ```text
-solutions/weekXX/개인폴더/문제폴더/자유로운파일명.확장자
+problems/weekXX/문제폴더/개인폴더/자유로운파일명.확장자
 ```
 
 PR 본문에는 `핵심 접근`과 `리뷰 요청`만 작성합니다. 자세한 규칙은 [`PR_AUTO_SUMMARY.md`](PR_AUTO_SUMMARY.md)를 참고하세요.

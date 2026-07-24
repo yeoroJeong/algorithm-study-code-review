@@ -15,7 +15,7 @@ LEVEL_ICONS = {"쉬움": "🟢", "중간": "🟡", "어려움": "🔴", "미분�
 
 
 class ConfigError(ValueError):
-    pass
+    """week.yml 설정 오류."""
 
 
 def markdown_escape(value: object) -> str:
@@ -35,18 +35,26 @@ def normalized_week(value: object, directory_name: str) -> str:
 def normalize_members(raw: Any) -> list[dict[str, str]]:
     if not isinstance(raw, list) or not raw:
         raise ConfigError("members에는 한 명 이상의 스터디원이 필요합니다.")
+
     result: list[dict[str, str]] = []
+    seen: set[str] = set()
     for item in raw:
         if isinstance(item, str):
-            folder = item.strip(); name = folder; github = ""
+            folder = item.strip()
+            name = folder
+            github = ""
         elif isinstance(item, dict):
             folder = str(item.get("folder") or item.get("id") or "").strip()
             name = str(item.get("name") or folder).strip()
             github = str(item.get("github") or "").strip()
         else:
             raise ConfigError("members 항목은 문자열 또는 객체여야 합니다.")
+
         if not folder or "/" in folder or "\\" in folder:
             raise ConfigError(f"잘못된 개인 폴더명: {folder!r}")
+        if folder in seen:
+            raise ConfigError(f"중복된 개인 폴더명: {folder}")
+        seen.add(folder)
         result.append({"folder": folder, "name": name, "github": github})
     return result
 
@@ -54,14 +62,17 @@ def normalize_members(raw: Any) -> list[dict[str, str]]:
 def normalize_problem_item(item: Any, index: int, level: str) -> dict[str, str]:
     if not isinstance(item, dict):
         raise ConfigError(f"{level} 그룹 {index}번째 문제가 객체가 아닙니다.")
+
     site = str(item.get("site", "")).strip()
     number = str(item.get("number", "")).strip()
     title = str(item.get("title", "")).strip()
     folder = str(item.get("folder") or f"{site}_{number}").strip().replace(" ", "_")
+
     if not site or not number or not title or not folder:
         raise ConfigError(f"{level} 그룹 {index}번째 문제의 site, number, title, folder를 확인하세요.")
     if "/" in folder or "\\" in folder:
         raise ConfigError(f"잘못된 문제 폴더명: {folder!r}")
+
     return {
         "study_level": level,
         "site": site,
@@ -78,20 +89,23 @@ def normalize_problems(raw: Any) -> list[dict[str, str]]:
     if isinstance(raw, list):
         if not raw:
             raise ConfigError("problems에는 한 개 이상의 문제가 필요합니다.")
-        return [normalize_problem_item(item, i, "미분류") for i, item in enumerate(raw, 1)]
-    if not isinstance(raw, dict) or not raw:
+        result = [normalize_problem_item(item, i, "미분류") for i, item in enumerate(raw, 1)]
+    elif isinstance(raw, dict) and raw:
+        unknown = set(raw) - set(LEVEL_ORDER)
+        if unknown:
+            raise ConfigError("지원하지 않는 난이도 그룹: " + ", ".join(sorted(map(str, unknown))))
+        result = []
+        for level in LEVEL_ORDER:
+            items = raw.get(level, []) or []
+            if not isinstance(items, list):
+                raise ConfigError(f"{level} 문제 그룹은 목록이어야 합니다.")
+            result.extend(normalize_problem_item(item, i, level) for i, item in enumerate(items, 1))
+    else:
         raise ConfigError("problems에는 문제 목록 또는 쉬움/중간/어려움 그룹이 필요합니다.")
-    unknown = set(raw) - set(LEVEL_ORDER)
-    if unknown:
-        raise ConfigError("지원하지 않는 난이도 그룹: " + ", ".join(sorted(map(str, unknown))))
-    result: list[dict[str, str]] = []
-    for level in LEVEL_ORDER:
-        items = raw.get(level, []) or []
-        if not isinstance(items, list):
-            raise ConfigError(f"{level} 문제 그룹은 목록이어야 합니다.")
-        result.extend(normalize_problem_item(item, i, level) for i, item in enumerate(items, 1))
-    if not result:
-        raise ConfigError("problems에는 한 개 이상의 문제가 필요합니다.")
+
+    folders = [item["folder"] for item in result]
+    if len(folders) != len(set(folders)):
+        raise ConfigError("중복된 문제 폴더명이 있습니다.")
     return result
 
 
@@ -99,20 +113,22 @@ def normalize_submission(config: dict[str, Any]) -> dict[str, Any]:
     raw = config.get("submission") or {}
     if not isinstance(raw, dict):
         raise ConfigError("submission은 객체여야 합니다.")
-    root = str(raw.get("root") or "solutions").strip()
+
     extensions_raw = raw.get("extensions") or sorted(DEFAULT_EXTENSIONS)
     if not isinstance(extensions_raw, list):
         raise ConfigError("submission.extensions는 목록이어야 합니다.")
+
     extensions: set[str] = set()
     for value in extensions_raw:
-        ext = str(value).strip().lower()
-        if ext and not ext.startswith("."):
-            ext = "." + ext
-        if ext:
-            extensions.add(ext)
+        extension = str(value).strip().lower()
+        if extension and not extension.startswith("."):
+            extension = "." + extension
+        if extension:
+            extensions.add(extension)
+
     if not extensions:
         raise ConfigError("허용된 제출 확장자가 없습니다.")
-    return {"root": root, "extensions": extensions}
+    return {"extensions": extensions}
 
 
 def load_config(path: Path) -> dict[str, Any]:
@@ -125,12 +141,17 @@ def load_config(path: Path) -> dict[str, Any]:
     return data
 
 
-def has_submission(week_name: str, member_folder: str, problem_folder: str, submission: dict[str, Any]) -> bool:
-    directory = ROOT / submission["root"] / week_name / member_folder / problem_folder
+def has_submission(
+    week_directory: Path,
+    problem_folder: str,
+    member_folder: str,
+    extensions: set[str],
+) -> bool:
+    directory = week_directory / problem_folder / member_folder
     if not directory.is_dir():
         return False
     return any(
-        path.is_file() and path.suffix.lower() in submission["extensions"]
+        path.is_file() and path.suffix.lower() in extensions
         for path in directory.rglob("*")
     )
 
@@ -160,20 +181,22 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
     period = config.get("period") or {}
     if not isinstance(period, dict):
         raise ConfigError("period는 객체여야 합니다.")
+
     start = str(period.get("start", "")).strip()
     end = str(period.get("end", "")).strip()
     deadline = str(config.get("deadline", "")).strip()
     notes = str(config.get("notes", "")).strip()
     members = normalize_members(config.get("members"))
     problems = normalize_problems(config.get("problems"))
-    submission = normalize_submission(config)
+    extensions = normalize_submission(config)["extensions"]
 
     lines = [
-        "<!-- AUTO-GENERATED FILE: week.yml과 solutions 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->",
+        "<!-- AUTO-GENERATED FILE: week.yml과 문제별 개인 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->",
         "",
         f"# {markdown_escape(week_label)} 알고리즘 문제",
         "",
     ]
+
     if start or end:
         lines.append(f"- **진행 기간:** {markdown_escape(start)} ~ {markdown_escape(end)}")
     if deadline:
@@ -182,10 +205,10 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
         lines.append("")
 
     lines.extend(["## 문제 목록", ""])
-    grouped = any(p["study_level"] != "미분류" for p in problems)
+    grouped = any(problem["study_level"] != "미분류" for problem in problems)
     if grouped:
         for level in LEVEL_ORDER:
-            items = [p for p in problems if p["study_level"] == level]
+            items = [problem for problem in problems if problem["study_level"] == level]
             if items:
                 lines.extend([f"### {LEVEL_ICONS[level]} {level}", ""])
                 append_problem_table(lines, items)
@@ -197,30 +220,44 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
     lines.extend(["## 제출 현황", ""])
     lines.append("| 스터디원 | " + " | ".join(markdown_escape(p["number"]) for p in problems) + " | 진행률 |")
     lines.append("|---|" + "".join(":---:|" for _ in problems) + ":---:|")
+
     for member in members:
-        statuses = []
+        statuses: list[str] = []
         completed = 0
         for problem in problems:
-            submitted = has_submission(week_directory.name, member["folder"], problem["folder"], submission)
+            submitted = has_submission(
+                week_directory,
+                problem["folder"],
+                member["folder"],
+                extensions,
+            )
             statuses.append("✅" if submitted else "❌")
             completed += int(submitted)
         label = f"{markdown_escape(member['name'])} (`{markdown_escape(member['folder'])}`)"
         lines.append(f"| {label} | " + " | ".join(statuses) + f" | **{completed}/{len(problems)}** |")
 
+    week_number = int("".join(ch for ch in week_directory.name if ch.isdigit()))
     lines.extend([
         "",
         "## 제출 규칙",
         "",
         f"- 브랜치: `{week_directory.name}/GitHub아이디`",
-        f"- PR 제목: `[W{int(''.join(ch for ch in week_directory.name if ch.isdigit())):02d}] 이름 주간 풀이`",
-        f"- 제출 경로: `{submission['root']}/{week_directory.name}/개인폴더/문제폴더/자유로운파일명.확장자`",
-        "- 개인 문제 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.",
+        f"- PR 제목: `[W{week_number:02d}] 이름 주간 풀이`",
+        f"- 제출 경로: `problems/{week_directory.name}/문제폴더/개인폴더/자유로운파일명.확장자`",
+        "- 개인 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.",
         "- 다른 스터디원의 PR을 최소 1개 리뷰합니다.",
         "",
     ])
+
     if notes:
         lines.extend(["## 추가 안내", "", notes, ""])
-    lines.extend(["---", "", "`week.yml` 또는 풀이가 `main`에 반영되면 이 문서는 자동 갱신됩니다.", ""])
+
+    lines.extend([
+        "---",
+        "",
+        "`week.yml` 또는 풀이가 `main`에 반영되면 이 문서는 자동 갱신됩니다.",
+        "",
+    ])
     return "\n".join(lines)
 
 
@@ -234,31 +271,40 @@ def find_configs(selected: str | None) -> list[Path]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--week")
+    parser = argparse.ArgumentParser(description="주차별 README를 생성합니다.")
+    parser.add_argument("--week", help="예: week02")
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+
     try:
         configs = find_configs(args.week)
     except ConfigError as error:
-        print(f"ERROR: {error}", file=sys.stderr); return 1
-    stale = []
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+
+    stale: list[Path] = []
     for config_path in configs:
         readme = config_path.parent / "README.md"
         try:
             rendered = render_readme(config_path.parent, load_config(config_path))
         except ConfigError as error:
-            print(f"ERROR [{config_path}]: {error}", file=sys.stderr); return 1
+            print(f"ERROR [{config_path}]: {error}", file=sys.stderr)
+            return 1
+
         current = readme.read_text(encoding="utf-8") if readme.exists() else None
         if current == rendered:
-            print(f"UNCHANGED: {readme.relative_to(ROOT)}"); continue
+            print(f"UNCHANGED: {readme.relative_to(ROOT)}")
+            continue
+
         stale.append(readme)
         if args.check:
             print(f"STALE: {readme.relative_to(ROOT)}")
         else:
             readme.write_text(rendered, encoding="utf-8", newline="\n")
             print(f"UPDATED: {readme.relative_to(ROOT)}")
+
     if args.check and stale:
+        print("README가 최신 상태가 아닙니다.", file=sys.stderr)
         return 1
     return 0
 

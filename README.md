@@ -39,17 +39,20 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 
 ## 📅 현재 주차
 
-| 주차 | 문제 목록 | 풀이 폴더 | 진행 상태 |
-|---|---|---|---|
-| 1주차 | [`problems/week01`](problems/week01/README.md) | [`solutions/week01`](solutions/week01) | 준비 중 |
+| 주차 | 문제·풀이 폴더 | 진행 상태 |
+|---|---|---|
+| 1주차 | [`problems/week01`](problems/week01/README.md) | 진행 중 |
 
-새 주차는 다음 명령으로 한 번에 만들 수 있습니다.
+새 주차는 GitHub의 **Actions → Create Weekly Setup → Run workflow**에서 문제 목록과 기간을 입력해 생성합니다. 로컬에서 생성할 때는 같은 형식의 문제 목록 파일을 준비합니다.
 
 ```bash
-python scripts/create_week.py 2 --start 2026-07-27 --end 2026-08-02
+python scripts/create_week.py 2 \
+  --start 2026-08-03 \
+  --end 2026-08-09 \
+  --problems-file week02-problems.txt
 ```
 
-또는 GitHub의 **Actions → Create Weekly Setup → Run workflow**를 사용하면 새 브랜치와 PR이 자동 생성됩니다.
+GitHub Actions를 사용하면 문제별 개인 폴더가 포함된 새 브랜치와 PR까지 자동 생성됩니다.
 
 ---
 
@@ -95,14 +98,16 @@ python scripts/create_week.py 2 --start 2026-07-27 --end 2026-08-02
 │   ├── quick-start.md           # 초보자용 Git 사용법
 │   └── review-guide.md          # 코드 리뷰 기준
 ├── problems/
-│   └── weekXX/README.md         # 문제·일정·발표자·제출 현황
+│   └── weekXX/
+│       ├── week.yml             # 주차 설정
+│       ├── README.md            # 문제 목록·제출 현황
+│       └── 문제폴더/
+│           └── 개인폴더/        # 자유로운 파일명의 풀이
 ├── scripts/
 │   ├── create_week.py           # 새 주차 구조 생성
 │   ├── progress.py              # 제출 현황 출력
 │   ├── validate_pr.py           # PR 제목·본문 검사
-│   └── validate_repository.py   # 풀이 경로·파일명·문법 검사
-├── solutions/
-│   └── weekXX/이름/             # 개인 풀이
+│   └── validate_repository.py   # 풀이 경로·문법 검사
 ├── templates/
 ├── study-config.json            # 멤버·플랫폼·파일 규칙
 └── CONTRIBUTING.md
@@ -122,15 +127,13 @@ week02/daewon
 ### 파일 위치
 
 ```text
-solutions/week01/YeoroJeong/SWEA_1954/solution.py
-solutions/week01/DaewonKim/BOJ_2178/solution.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
+problems/week01/BOJ_2178/DaewonKim/solution.py
 ```
 
 ### 파일 이름
 
-```text
-플랫폼_문제번호_문제명.py
-```
+개인 폴더 안의 파일명은 자유입니다. 제출 여부는 폴더 경로와 확장자로 판단합니다.
 
 허용 플랫폼은 `SWEA`, `BOJ`, `Programmers`, `ETC`입니다.
 
@@ -158,7 +161,7 @@ solutions/week01/DaewonKim/BOJ_2178/solution.py
 PR을 생성하면 GitHub Actions가 다음을 검사합니다.
 
 - Python 문법 오류
-- `solutions/weekXX/개인폴더/문제폴더/` 경로 규칙
+- `problems/weekXX/문제폴더/개인폴더/` 경로 규칙
 - 등록되지 않은 이름의 폴더 사용 여부
 - 허용된 풀이 파일 확장자
 - 빈 파일 또는 지나치게 큰 파일
@@ -199,6 +202,7 @@ python scripts/progress.py
 - [코드 리뷰 가이드](docs/review-guide.md)
 - [반복 실수 기록](docs/common-mistakes.md)
 - [스터디 운영 가이드](docs/operation-guide.md)
+- [문제 중심 폴더 구조 전환](PROBLEM_FIRST_MIGRATION.md)
 
 
 ## 주차 폴더 자동 생성

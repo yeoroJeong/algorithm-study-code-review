@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create missing problem and per-member submission folders from week.yml files."""
+"""Create missing problem/member folders from every week.yml."""
 
 from __future__ import annotations
 
@@ -12,7 +12,6 @@ from generate_week_readmes import (
     load_config,
     normalize_members,
     normalize_problems,
-    normalize_submission,
 )
 
 
@@ -20,40 +19,45 @@ def sync_week(config_path: Path) -> list[Path]:
     config = load_config(config_path)
     members = normalize_members(config.get("members"))
     problems = normalize_problems(config.get("problems"))
-    submission = normalize_submission(config)
-    week_name = config_path.parent.name
+    week_directory = config_path.parent
     created: list[Path] = []
 
     for problem in problems:
-        problem_meta = config_path.parent / problem["folder"]
-        problem_meta.mkdir(parents=True, exist_ok=True)
-        keep = problem_meta / ".gitkeep"
-        if not keep.exists():
-            keep.touch(); created.append(keep)
+        problem_directory = week_directory / problem["folder"]
+        problem_directory.mkdir(parents=True, exist_ok=True)
 
-    for member in members:
-        member_dir = ROOT / submission["root"] / week_name / member["folder"]
-        member_dir.mkdir(parents=True, exist_ok=True)
-        root_keep = member_dir / ".gitkeep"
-        if root_keep.exists():
-            root_keep.unlink()
-        for problem in problems:
-            problem_dir = member_dir / problem["folder"]
-            problem_dir.mkdir(parents=True, exist_ok=True)
-            keep = problem_dir / ".gitkeep"
-            if not keep.exists():
-                keep.touch(); created.append(keep)
+        legacy_keep = problem_directory / ".gitkeep"
+        if legacy_keep.exists():
+            legacy_keep.unlink()
+
+        for member in members:
+            member_directory = problem_directory / member["folder"]
+            member_directory.mkdir(parents=True, exist_ok=True)
+            keep = member_directory / ".gitkeep"
+            has_real_file = any(
+                path.is_file() and path.name != ".gitkeep"
+                for path in member_directory.rglob("*")
+            )
+            if has_real_file:
+                if keep.exists():
+                    keep.unlink()
+            elif not keep.exists():
+                keep.touch()
+                created.append(keep)
+
     return created
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="문제별 개인 제출 폴더를 동기화합니다.")
     parser.add_argument("--week", help="예: week02. 생략하면 전체 주차")
     args = parser.parse_args()
+
     if args.week:
         configs = [ROOT / "problems" / args.week / "week.yml"]
     else:
         configs = sorted((ROOT / "problems").glob("week*/week.yml"))
+
     try:
         for path in configs:
             if not path.is_file():
