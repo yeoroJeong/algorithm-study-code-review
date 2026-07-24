@@ -8,12 +8,13 @@ on:
       - "problems/**"
       - "solutions/**"
       - "scripts/generate_week_readmes.py"
+      - "scripts/sync_week_folders.py"
       - ".github/workflows/update-week-readmes.yml"
 
   workflow_dispatch:
     inputs:
       week:
-        description: "갱신할 주차 폴더 (비워두면 전체, 예: week01)"
+        description: "갱신할 주차 폴더 (비워두면 전체, 예: week02)"
         required: false
         default: ""
 
@@ -26,9 +27,7 @@ concurrency:
 
 jobs:
   generate:
-    name: Generate weekly README files
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,27 +42,26 @@ jobs:
       - name: Install dependency
         run: python -m pip install PyYAML
 
-      - name: Generate README files
+      - name: Sync problem folders and generate READMEs
         env:
           SELECTED_WEEK: ${{ github.event.inputs.week }}
         run: |
           if [ -n "$SELECTED_WEEK" ]; then
+            python scripts/sync_week_folders.py --week "$SELECTED_WEEK"
             python scripts/generate_week_readmes.py --week "$SELECTED_WEEK"
           else
+            python scripts/sync_week_folders.py
             python scripts/generate_week_readmes.py
           fi
 
-      - name: Commit generated README files
+      - name: Commit generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add problems/week*/README.md
-
+          git add problems solutions
           if git diff --cached --quiet; then
-            echo "README 변경사항이 없습니다."
+            echo "자동 생성 변경사항이 없습니다."
             exit 0
           fi
-
-          git commit -m "docs: 주차 README 자동 갱신"
+          git commit -m "[CHORE] 주차 폴더 및 README 자동 갱신"
           git push

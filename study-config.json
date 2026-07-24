@@ -4,28 +4,28 @@
   "language": "Python",
   "members": [
     {
-      "name": "김대원",
-      "folder": "DaewonKim",
-      "github": ""
-    },
-    {
-      "name": "정현수",
       "folder": "YeoroJeong",
+      "name": "정현수",
       "github": "yeoroJeong"
     },
     {
-      "name": "임정현",
-      "folder": "JeonghyeonIm",
-      "github": "JeonghyeonIm"
+      "folder": "DaewonKim",
+      "name": "김대원",
+      "github": ""
     },
     {
-      "name": "이지은",
       "folder": "CryingDitto",
+      "name": "이지은",
       "github": "CryingDitto"
     },
     {
-      "name": "최수빈",
+      "folder": "JeonghyeonIm",
+      "name": "임정현",
+      "github": "JeonghyeonIm"
+    },
+    {
       "folder": "ChoiSooBin",
+      "name": "최수빈",
       "github": ""
     }
   ],
@@ -35,5 +35,10 @@
     "Programmers",
     "ETC"
   ],
-  "submission_structure": "solutions/weekXX/member-folder/problem-folder/free-filename.py"
+  "submission_root": "solutions",
+  "submission_extensions": [
+    ".py",
+    ".java",
+    ".cpp"
+  ]
 }

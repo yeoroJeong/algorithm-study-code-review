@@ -100,3 +100,8 @@ Settings → Rules → Rulesets → New branch ruleset
 - 백트래킹 복구 누락
 
 PR의 복습 기록에 남기고, 반복되면 `docs/common-mistakes.md`에 공통 문서로 정리합니다.
+
+
+## 주차 폴더 자동 생성
+
+문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.

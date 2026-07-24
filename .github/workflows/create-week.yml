@@ -10,11 +10,19 @@ on:
         type: number
       start_date:
         description: "시작일 YYYY-MM-DD"
-        required: false
+        required: true
         type: string
       end_date:
         description: "종료일 YYYY-MM-DD"
+        required: true
+        type: string
+      deadline:
+        description: "제출 마감 (비우면 종료일 23:59)"
         required: false
+        type: string
+      problems:
+        description: "한 줄에 한 문제: 쉬움|SWEA|1954|달팽이 숫자|D2|구현|문제링크"
+        required: true
         type: string
 
 permissions:
@@ -24,7 +32,6 @@ permissions:
 jobs:
   create-week:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,11 +43,20 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Create weekly folders and document
+      - name: Install dependency
+        run: python -m pip install PyYAML
+
+      - name: Create weekly configuration and folders
+        env:
+          PROBLEMS_INPUT: ${{ inputs.problems }}
         run: |
+          printf '%s
+' "$PROBLEMS_INPUT" > /tmp/problems.txt
           python scripts/create_week.py "${{ inputs.week }}" \
             --start "${{ inputs.start_date }}" \
-            --end "${{ inputs.end_date }}"
+            --end "${{ inputs.end_date }}" \
+            --deadline "${{ inputs.deadline }}" \
+            --problems-file /tmp/problems.txt
 
       - name: Commit and push branch
         id: commit
@@ -50,18 +66,15 @@ jobs:
           PADDED_WEEK=$(printf "%02d" "$WEEK")
           BRANCH="chore/week-${PADDED_WEEK}-setup"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
           git add "problems/week${PADDED_WEEK}" "solutions/week${PADDED_WEEK}"
-
           if git diff --cached --quiet; then
             echo "변경 사항이 없습니다. 이미 생성된 주차인지 확인해주세요."
             exit 1
           fi
-
-          git commit -m "[CHORE] ${PADDED_WEEK}주차 구조 생성"
+          git commit -m "[CHORE] W${PADDED_WEEK} 주차 구조 생성"
           git push -u origin "$BRANCH"
 
       - name: Create pull request
@@ -75,4 +88,4 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "[CHORE] W${PADDED_WEEK} 주차 구조 생성" \
-            --body "W${PADDED_WEEK} 문제 문서와 멤버별 풀이 폴더를 생성했습니다. 문제와 일정을 채운 뒤 병합해주세요."
+            --body "W${PADDED_WEEK} week.yml, 문제 문서, 멤버별 문제 제출 폴더를 자동 생성했습니다. 확인 후 병합해주세요."
