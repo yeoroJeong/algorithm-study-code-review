@@ -3,12 +3,37 @@
   "default_branch": "main",
   "language": "Python",
   "members": [
-    {"name": "김대원", "github": ""},
-    {"name": "정현수", "github": "yeoroJeong"},
-    {"name": "임정현", "github": ""},
-    {"name": "이지은", "github": ""},
-    {"name": "최수빈", "github": ""}
+    {
+      "name": "김대원",
+      "folder": "DaewonKim",
+      "github": ""
+    },
+    {
+      "name": "정현수",
+      "folder": "YeoroJeong",
+      "github": "yeoroJeong"
+    },
+    {
+      "name": "임정현",
+      "folder": "JeonghyeonIm",
+      "github": "JeonghyeonIm"
+    },
+    {
+      "name": "이지은",
+      "folder": "CryingDitto",
+      "github": "CryingDitto"
+    },
+    {
+      "name": "최수빈",
+      "folder": "ChoiSooBin",
+      "github": ""
+    }
   ],
-  "platforms": ["SWEA", "BOJ", "Programmers", "ETC"],
-  "solution_filename_pattern": "^(SWEA|BOJ|Programmers|ETC)_[A-Za-z0-9가-힣_-]+\\.py$"
+  "platforms": [
+    "SWEA",
+    "BOJ",
+    "Programmers",
+    "ETC"
+  ],
+  "submission_structure": "solutions/weekXX/member-folder/problem-folder/free-filename.py"
 }

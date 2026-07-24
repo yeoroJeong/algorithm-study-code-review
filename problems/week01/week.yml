@@ -6,53 +6,73 @@ period:
 
 deadline: "2026-08-02 23:59"
 
-# id는 제출 파일명과 일치해야 합니다.
-# 예: problems/week01/SWEA_1954/yeoroJeong.py
+# solutions/week01 아래의 실제 개인 폴더 이름입니다.
 members:
-  - id: yeoroJeong
+  - folder: YeoroJeong
     name: 정현수
+    github: yeoroJeong
 
-  # 아래 형식으로 스터디원을 추가하세요.
-  # - id: github-id
-  #   name: 이름
-  #
-  # 예전 파일명도 제출로 인정하려면 aliases를 사용합니다.
-  # - id: github-id
-  #   name: 이름
-  #   aliases:
-  #     - old-file-name
+  - folder: DaewonKim
+    name: 김대원
 
+  - folder: CryingDitto
+    name: 이지은
+    github: CryingDitto
+
+  - folder: JeonghyeonIm
+    name: 임정현
+    github: JeonghyeonIm
+
+  - folder: ChoiSooBin
+    name: 최수빈
+
+# 스터디 체감 난이도 기준입니다.
+# difficulty는 SWEA 공식 난이도입니다.
 problems:
-  - site: SWEA
-    number: "1954"
-    title: 달팽이 숫자
-    difficulty: D2
-    category: 구현
-    folder: SWEA_1954
-    url: ""
+  쉬움:
+    - site: SWEA
+      number: "1954"
+      title: 달팽이 숫자
+      difficulty: D2
+      category: 구현 / 2차원 배열 / 방향 전환
+      folder: SWEA_1954
+      url: "https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1954"
 
-  - site: SWEA
-    number: "1959"
-    title: 두 개의 숫자열
-    difficulty: D2
-    category: 완전 탐색
-    folder: SWEA_1959
-    url: ""
+    - site: SWEA
+      number: "2001"
+      title: 파리 퇴치
+      difficulty: D2
+      category: 완전 탐색 / 2차원 배열
+      folder: SWEA_2001
+      url: "https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=2001"
 
-  - site: SWEA
-    number: "12712"
-    title: 파리퇴치3
-    difficulty: D2
-    category: 구현
-    folder: SWEA_12712
-    url: ""
+  중간:
+    - site: SWEA
+      number: "1209"
+      title: "[S/W 문제해결 기본] 2일차 - Sum"
+      difficulty: D3
+      category: 구현 / 행·열·대각선 합
+      folder: SWEA_1209
+      url: "https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1209"
+
+  어려움:
+    - site: SWEA
+      number: "1244"
+      title: "[S/W 문제해결 응용] 2일차 - 최대 상금"
+      difficulty: D3
+      category: 백트래킹 / 완전 탐색 / 상태 중복 제거
+      folder: SWEA_1244
+      url: "https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1244"
 
 submission:
+  # solutions/weekXX/개인폴더/문제폴더/자유파일명.py
+  root: solutions
   extensions:
     - .py
-    - .java
-    - .cpp
 
 notes: |
+  - 권장 풀이 순서: 1954 → 2001 → 1209 → 1244
+  - 앞의 세 문제는 필수, 1244는 도전 문제로 운영해도 좋습니다.
+  - 파일명은 자유이며 반드시 본인의 개인 폴더와 문제 폴더 안에 제출합니다.
   - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
   - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.

@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "problems/**"
+      - "solutions/**"
       - "scripts/generate_week_readmes.py"
       - ".github/workflows/update-week-readmes.yml"
 

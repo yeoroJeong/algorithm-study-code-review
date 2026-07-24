@@ -70,7 +70,7 @@ def make_problem_readme(week_number: int, start: str, end: str, members: list[st
 
 def create_week(week_number: int, start: str, end: str, force: bool) -> list[Path]:
     config = load_config()
-    members = [member["name"] for member in config["members"]]
+    members = [member.get("folder") or member["name"] for member in config["members"]]
     week = normalized_week(week_number)
 
     problem_dir = ROOT / "problems" / week
