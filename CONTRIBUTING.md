@@ -30,20 +30,15 @@ git switch week01/yeoroJeong
 solutions/week01/YeoroJeong/SWEA_1954/solution.py
 ```
 
-파일명은 다음 규칙을 사용합니다.
+문제 폴더 안의 파일명은 자유입니다. 다음 파일은 모두 같은 문제 제출로 인식됩니다.
 
 ```text
-플랫폼_문제번호_문제명.py
+solutions/week01/YeoroJeong/SWEA_1954/solution.py
+solutions/week01/YeoroJeong/SWEA_1954/main.py
+solutions/week01/YeoroJeong/SWEA_1954/달팽이숫자.py
 ```
 
-예시:
-
-```text
-SWEA_1954_달팽이숫자.py
-BOJ_2178_미로탐색.py
-Programmers_타겟넘버.py
-ETC_회전배열연습.py
-```
+제출 여부는 파일명이 아니라 `주차/개인폴더/문제폴더` 경로로 판단합니다.
 
 ## 3. 코드 설명
 
@@ -105,7 +100,7 @@ PR 제목 예시:
 [W01] 정현수 주간 풀이
 ```
 
-PR에는 해당 주에 푼 문제를 모두 적고, 리뷰를 원하는 부분을 한 가지 이상 구체적으로 작성합니다.
+PR 본문에는 핵심 접근과 리뷰 요청만 작성합니다. 주차·작성자·풀이 목록·사용 언어는 변경된 풀이 경로에서 자동 분석되어 PR 댓글로 표시됩니다.
 
 ## 7. 리뷰
 

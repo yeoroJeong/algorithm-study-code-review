@@ -105,3 +105,7 @@ PR의 복습 기록에 남기고, 반복되면 `docs/common-mistakes.md`에 공�
 ## 주차 폴더 자동 생성
 
 문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.
+
+## PR 자동 요약 운영
+
+`PR Policy` 워크플로는 주간 풀이 PR의 변경 파일을 분석합니다. 제목의 주차, 개인 폴더, 등록 문제, 파일 확장자를 검증하고 자동 요약 댓글을 생성합니다. PR에 커밋이 추가되면 같은 댓글을 갱신합니다.
