@@ -126,3 +126,7 @@ git stash pop
 ## 주차 폴더 자동 생성
 
 문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.
+
+## 풀이 PR 본문
+
+풀이 목록은 변경된 폴더에서 자동 인식됩니다. PR 제목은 `[W01] 이름 주간 풀이`로 작성하고, 본문에는 핵심 접근과 리뷰 요청만 구체적으로 작성하세요. Actions가 문제 목록과 사용 언어를 PR 댓글로 자동 요약합니다.

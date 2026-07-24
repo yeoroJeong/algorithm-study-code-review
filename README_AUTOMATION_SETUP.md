@@ -155,3 +155,13 @@ GitHub 저장소 → Actions → Update Week READMEs → Run workflow
 ```
 
 특정 주차만 실행하려면 `week01`처럼 입력합니다. 비워두면 `week.yml`이 있는 모든 주차를 갱신합니다.
+
+## PR 풀이 목록 자동 분석
+
+주간 풀이 PR은 풀이 목록을 본문에 직접 작성하지 않습니다. 다음 경로를 기준으로 Actions가 주차, 작성자, 문제, 언어를 자동 분석합니다.
+
+```text
+solutions/weekXX/개인폴더/문제폴더/자유로운파일명.확장자
+```
+
+PR 본문에는 `핵심 접근`과 `리뷰 요청`만 작성합니다. 자세한 규칙은 [`PR_AUTO_SUMMARY.md`](PR_AUTO_SUMMARY.md)를 참고하세요.

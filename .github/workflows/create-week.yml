@@ -50,8 +50,7 @@ jobs:
         env:
           PROBLEMS_INPUT: ${{ inputs.problems }}
         run: |
-          printf '%s
-' "$PROBLEMS_INPUT" > /tmp/problems.txt
+          printf '%s\n' "$PROBLEMS_INPUT" > /tmp/problems.txt
           python scripts/create_week.py "${{ inputs.week }}" \
             --start "${{ inputs.start_date }}" \
             --end "${{ inputs.end_date }}" \
