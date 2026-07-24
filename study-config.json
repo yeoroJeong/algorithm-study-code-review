@@ -1,0 +1,14 @@
+{
+  "repository": "yeoroJeong/algorithm-study-code-review",
+  "default_branch": "main",
+  "language": "Python",
+  "members": [
+    {"name": "김대원", "github": ""},
+    {"name": "정현수", "github": "yeoroJeong"},
+    {"name": "임정현", "github": ""},
+    {"name": "이지은", "github": ""},
+    {"name": "최수빈", "github": ""}
+  ],
+  "platforms": ["SWEA", "BOJ", "Programmers", "ETC"],
+  "solution_filename_pattern": "^(SWEA|BOJ|Programmers|ETC)_[A-Za-z0-9가-힣_-]+\\.py$"
+}

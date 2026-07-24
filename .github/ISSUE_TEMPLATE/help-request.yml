@@ -1,0 +1,57 @@
+name: "❓ 풀이 도움·추가 리뷰 요청"
+description: "막힌 문제나 특정 코드에 대한 도움을 요청합니다."
+title: "[도움 요청] "
+labels: []
+body:
+  - type: input
+    id: problem
+    attributes:
+      label: 대상 문제
+      placeholder: "SWEA 1954 달팽이 숫자"
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 코드 또는 PR 링크
+      placeholder: "https://github.com/..."
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 도움이 필요한 부분
+      options:
+        - 접근 방법을 모르겠음
+        - 오답 원인을 찾지 못함
+        - 시간 초과 또는 메모리 초과
+        - 코드 가독성 개선
+        - Python 문법 또는 자료구조
+        - 더 좋은 풀이 비교
+        - 기타
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempt
+    attributes:
+      label: 현재까지 시도한 내용
+      description: "어떤 아이디어와 코드를 시도했는지 적어주세요."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 예상한 결과와 실제 결과
+      placeholder: |
+        예상: #1 3
+        실제: #1 2
+
+  - type: textarea
+    id: question
+    attributes:
+      label: 구체적인 질문
+      description: "리뷰어가 무엇을 확인하면 되는지 한 문장 이상 작성해주세요."
+    validations:
+      required: true

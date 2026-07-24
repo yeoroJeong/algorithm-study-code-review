@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "📖 참여 방법 확인"
+    url: "https://github.com/yeoroJeong/algorithm-study-code-review/blob/main/docs/quick-start.md"
+    about: "브랜치 생성, 제출, PR 작성 방법을 먼저 확인해주세요."
+  - name: "💬 코드 리뷰 기준 확인"
+    url: "https://github.com/yeoroJeong/algorithm-study-code-review/blob/main/docs/review-guide.md"
+    about: "리뷰 표기와 확인 항목을 확인해주세요."

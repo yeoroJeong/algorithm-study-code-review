@@ -1,21 +1,38 @@
+# Python bytecode and cache
 __pycache__/
 *.py[cod]
 *$py.class
 
+# Virtual environments
 .venv/
 venv/
 env/
 
+# Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
+# Test, type check and lint cache
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
 htmlcov/
 
+# Local input/output files commonly used during problem solving
+input.txt
+output.txt
+result.txt
+
+# Logs and temporary files
 *.log
+*.tmp
+*.temp
+~$*

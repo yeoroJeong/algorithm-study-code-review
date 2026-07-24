@@ -1,0 +1,49 @@
+name: Repository Check
+
+on:
+  pull_request:
+    paths:
+      - "solutions/**/*.py"
+      - "scripts/**"
+      - "study-config.json"
+      - ".github/workflows/repository-check.yml"
+  push:
+    branches: [main]
+    paths:
+      - "solutions/**/*.py"
+      - "scripts/**"
+      - "study-config.json"
+      - ".github/workflows/repository-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate solutions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate changed files on PR
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python scripts/validate_repository.py --base "$BASE_SHA" --head "$HEAD_SHA"
+
+      - name: Validate entire repository on main
+        if: github.event_name == 'push'
+        run: python scripts/validate_repository.py
+
+      - name: Print submission progress
+        run: python scripts/progress.py
