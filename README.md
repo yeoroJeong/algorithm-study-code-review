@@ -123,16 +123,16 @@ week02/daewon
 
 ```text
 solutions/week01/YeoroJeong/SWEA_1954/solution.py
-solutions/week01/DaewonKim/SWEA_2001/main.py
+solutions/week01/DaewonKim/BOJ_2178/solution.py
 ```
 
-### 제출 구조
+### 파일 이름
 
 ```text
-solutions/weekXX/개인폴더/문제폴더/자유파일명.py
+플랫폼_문제번호_문제명.py
 ```
 
-파일명은 자유이며 폴더 위치로 문제별 제출을 판정합니다.
+허용 플랫폼은 `SWEA`, `BOJ`, `Programmers`, `ETC`입니다.
 
 ### PR 제목
 
@@ -160,7 +160,7 @@ PR을 생성하면 GitHub Actions가 다음을 검사합니다.
 - Python 문법 오류
 - `solutions/weekXX/개인폴더/문제폴더/` 경로 규칙
 - 등록되지 않은 이름의 폴더 사용 여부
-- 등록된 개인 폴더·문제 폴더 여부
+- 풀이 파일명 규칙
 - 빈 파일 또는 지나치게 큰 파일
 - PR 제목 형식
 - PR 본문의 필수 섹션
@@ -197,3 +197,8 @@ python scripts/progress.py
 - [코드 리뷰 가이드](docs/review-guide.md)
 - [반복 실수 기록](docs/common-mistakes.md)
 - [스터디 운영 가이드](docs/operation-guide.md)
+
+
+## 주차 폴더 자동 생성
+
+문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.

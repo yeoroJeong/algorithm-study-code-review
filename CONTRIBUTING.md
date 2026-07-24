@@ -30,10 +30,19 @@ git switch week01/yeoroJeong
 solutions/week01/YeoroJeong/SWEA_1954/solution.py
 ```
 
-개인 폴더 아래에 문제 폴더를 만들고, 그 안에는 자유로운 파일명을 사용합니다.
+파일명은 다음 규칙을 사용합니다.
 
 ```text
-solutions/weekXX/개인폴더/문제폴더/자유파일명.py
+플랫폼_문제번호_문제명.py
+```
+
+예시:
+
+```text
+SWEA_1954_달팽이숫자.py
+BOJ_2178_미로탐색.py
+Programmers_타겟넘버.py
+ETC_회전배열연습.py
 ```
 
 ## 3. 코드 설명
@@ -134,3 +143,8 @@ git add .
 git commit -m "[W01] main 병합 충돌 해결"
 git push
 ```
+
+
+## 주차 폴더 자동 생성
+
+문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.

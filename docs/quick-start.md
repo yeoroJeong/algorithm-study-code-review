@@ -121,3 +121,8 @@ git pull origin main
 git switch 원래브랜치
 git stash pop
 ```
+
+
+## 주차 폴더 자동 생성
+
+문제별 개인 제출 폴더 자동 생성 방법은 [`WEEK_FOLDER_AUTOMATION.md`](WEEK_FOLDER_AUTOMATION.md)를 참고하세요.
