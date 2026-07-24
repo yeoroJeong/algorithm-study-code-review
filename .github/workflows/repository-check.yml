@@ -3,16 +3,14 @@ name: Repository Check
 on:
   pull_request:
     paths:
-      - "solutions/**/*.py"
-      - "problems/**/week.yml"
+      - "problems/**"
       - "scripts/**"
       - "study-config.json"
       - ".github/workflows/repository-check.yml"
   push:
     branches: [main]
     paths:
-      - "solutions/**/*.py"
-      - "problems/**/week.yml"
+      - "problems/**"
       - "scripts/**"
       - "study-config.json"
       - ".github/workflows/repository-check.yml"

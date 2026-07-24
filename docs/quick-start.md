@@ -41,7 +41,7 @@ git switch week01/yeoroJeong
 ## 4. 본인 폴더에 풀이 추가
 
 ```text
-solutions/week01/YeoroJeong/SWEA_1954/solution.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
 ```
 
 다른 사람 폴더에는 파일을 추가하지 않습니다.

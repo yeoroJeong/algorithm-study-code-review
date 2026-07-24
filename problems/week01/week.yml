@@ -6,7 +6,7 @@ period:
 
 deadline: "2026-08-02 23:59"
 
-# folder는 solutions/week01 아래의 개인 폴더 이름입니다.
+# folder는 각 문제 폴더 아래에 생성할 개인 폴더 이름입니다.
 members:
   - folder: YeoroJeong
     name: 정현수
@@ -63,7 +63,6 @@ problems:
       url: "https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=1244"
 
 submission:
-  root: solutions
   extensions:
     - .py
     - .java
@@ -71,6 +70,6 @@ submission:
 
 notes: |
   - 권장 풀이 순서: 1954 → 2001 → 1209 → 1244
-  - 파일명은 자유이며, 반드시 본인의 개인 폴더 아래 해당 문제 폴더에 제출합니다.
+  - 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.
   - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
   - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.

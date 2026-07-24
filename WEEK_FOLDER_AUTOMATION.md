@@ -37,13 +37,11 @@ deadline: 2026-08-09 23:59
 ```text
 problems/week02/week.yml
 problems/week02/README.md
-problems/week02/SWEA_1974/.gitkeep
-
-solutions/week02/YeoroJeong/SWEA_1974/.gitkeep
-solutions/week02/DaewonKim/SWEA_1974/.gitkeep
-solutions/week02/CryingDitto/SWEA_1974/.gitkeep
-solutions/week02/JeonghyeonIm/SWEA_1974/.gitkeep
-solutions/week02/ChoiSooBin/SWEA_1974/.gitkeep
+problems/week02/SWEA_1974/YeoroJeong/.gitkeep
+problems/week02/SWEA_1974/DaewonKim/.gitkeep
+problems/week02/SWEA_1974/CryingDitto/.gitkeep
+problems/week02/SWEA_1974/JeonghyeonIm/.gitkeep
+problems/week02/SWEA_1974/ChoiSooBin/.gitkeep
 ```
 
 모든 문제와 모든 스터디원의 조합으로 폴더가 생성됩니다.
@@ -52,7 +50,7 @@ solutions/week02/ChoiSooBin/SWEA_1974/.gitkeep
 
 `problems/week02/week.yml`에 문제를 추가하고 `main`에 병합하면 `Update Week READMEs`가 자동으로:
 
-1. 모든 개인 폴더 아래 새 문제 폴더 생성
+1. 새 문제 폴더 아래 모든 개인 폴더 생성
 2. README 문제 목록 갱신
 3. 제출 현황 갱신
 4. 변경사항 자동 커밋
@@ -64,8 +62,8 @@ solutions/week02/ChoiSooBin/SWEA_1974/.gitkeep
 파일명은 자유입니다.
 
 ```text
-solutions/week02/YeoroJeong/SWEA_1974/solution.py
-solutions/week02/CryingDitto/SWEA_1974/my_answer.py
+problems/week02/SWEA_1974/YeoroJeong/solution.py
+problems/week02/SWEA_1974/CryingDitto/my_answer.py
 ```
 
 PR이 `main`에 병합되면 해당 문제 제출 상태가 자동으로 `✅`가 됩니다.
@@ -75,14 +73,14 @@ PR이 `main`에 병합되면 해당 문제 제출 상태가 자동으로 `✅`�
 이 ZIP을 기존 저장소에 덮어쓴 뒤:
 
 ```bash
-git switch -c chore/auto-problem-folders
+git switch -c chore/problem-first-structure
 git add .
-git commit -m "[CHORE] 개인별 문제 폴더 자동 생성 추가"
+git commit -m "[CHORE] 문제 중심 폴더 구조 적용"
 git push -u origin chore/auto-problem-folders
 ```
 
 PR 제목:
 
 ```text
-[CHORE] 개인별 문제 폴더 자동 생성 추가
+[CHORE] 문제 중심 폴더 구조 적용
 ```

@@ -27,18 +27,18 @@ git switch week01/yeoroJeong
 반드시 본인의 주차별 폴더에 추가합니다.
 
 ```text
-solutions/week01/YeoroJeong/SWEA_1954/solution.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
 ```
 
 문제 폴더 안의 파일명은 자유입니다. 다음 파일은 모두 같은 문제 제출로 인식됩니다.
 
 ```text
-solutions/week01/YeoroJeong/SWEA_1954/solution.py
-solutions/week01/YeoroJeong/SWEA_1954/main.py
-solutions/week01/YeoroJeong/SWEA_1954/달팽이숫자.py
+problems/week01/SWEA_1954/YeoroJeong/solution.py
+problems/week01/SWEA_1954/YeoroJeong/main.py
+problems/week01/SWEA_1954/YeoroJeong/달팽이숫자.py
 ```
 
-제출 여부는 파일명이 아니라 `주차/개인폴더/문제폴더` 경로로 판단합니다.
+제출 여부는 파일명이 아니라 `주차/문제폴더/개인폴더` 경로로 판단합니다.
 
 ## 3. 코드 설명
 
@@ -78,7 +78,7 @@ python scripts/progress.py
 문제 하나당 커밋 하나를 권장합니다.
 
 ```bash
-git add solutions/week01/YeoroJeong/SWEA_1954/solution.py
+git add problems/week01/SWEA_1954/YeoroJeong/solution.py
 git commit -m "[W01][SWEA-1954] 풀이 추가"
 ```
 

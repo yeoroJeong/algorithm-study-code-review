@@ -35,10 +35,10 @@
     "Programmers",
     "ETC"
   ],
-  "submission_root": "solutions",
   "submission_extensions": [
     ".py",
     ".java",
     ".cpp"
-  ]
+  ],
+  "submission_layout": "problems/weekXX/problem/member/file"
 }

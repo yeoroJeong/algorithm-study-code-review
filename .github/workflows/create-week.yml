@@ -68,7 +68,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
-          git add "problems/week${PADDED_WEEK}" "solutions/week${PADDED_WEEK}"
+          git add "problems/week${PADDED_WEEK}"
           if git diff --cached --quiet; then
             echo "변경 사항이 없습니다. 이미 생성된 주차인지 확인해주세요."
             exit 1
@@ -87,4 +87,4 @@ jobs:
             --base main \
             --head "$BRANCH" \
             --title "[CHORE] W${PADDED_WEEK} 주차 구조 생성" \
-            --body "W${PADDED_WEEK} week.yml, 문제 문서, 멤버별 문제 제출 폴더를 자동 생성했습니다. 확인 후 병합해주세요."
+            --body "W${PADDED_WEEK} week.yml, README, 문제별 개인 제출 폴더를 자동 생성했습니다. 확인 후 병합해주세요."
