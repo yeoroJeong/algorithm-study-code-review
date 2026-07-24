@@ -122,17 +122,17 @@ week02/daewon
 ### 파일 위치
 
 ```text
-solutions/week01/정현수/SWEA_1954_달팽이숫자.py
-solutions/week01/김대원/BOJ_2178_미로탐색.py
+solutions/week01/YeoroJeong/SWEA_1954/solution.py
+solutions/week01/DaewonKim/SWEA_2001/main.py
 ```
 
-### 파일 이름
+### 제출 구조
 
 ```text
-플랫폼_문제번호_문제명.py
+solutions/weekXX/개인폴더/문제폴더/자유파일명.py
 ```
 
-허용 플랫폼은 `SWEA`, `BOJ`, `Programmers`, `ETC`입니다.
+파일명은 자유이며 폴더 위치로 문제별 제출을 판정합니다.
 
 ### PR 제목
 
@@ -158,9 +158,9 @@ solutions/week01/김대원/BOJ_2178_미로탐색.py
 PR을 생성하면 GitHub Actions가 다음을 검사합니다.
 
 - Python 문법 오류
-- `solutions/weekXX/이름/` 경로 규칙
+- `solutions/weekXX/개인폴더/문제폴더/` 경로 규칙
 - 등록되지 않은 이름의 폴더 사용 여부
-- 풀이 파일명 규칙
+- 등록된 개인 폴더·문제 폴더 여부
 - 빈 파일 또는 지나치게 큰 파일
 - PR 제목 형식
 - PR 본문의 필수 섹션

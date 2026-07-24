@@ -27,22 +27,13 @@ git switch week01/yeoroJeong
 반드시 본인의 주차별 폴더에 추가합니다.
 
 ```text
-solutions/week01/정현수/SWEA_1954_달팽이숫자.py
+solutions/week01/YeoroJeong/SWEA_1954/solution.py
 ```
 
-파일명은 다음 규칙을 사용합니다.
+개인 폴더 아래에 문제 폴더를 만들고, 그 안에는 자유로운 파일명을 사용합니다.
 
 ```text
-플랫폼_문제번호_문제명.py
-```
-
-예시:
-
-```text
-SWEA_1954_달팽이숫자.py
-BOJ_2178_미로탐색.py
-Programmers_타겟넘버.py
-ETC_회전배열연습.py
+solutions/weekXX/개인폴더/문제폴더/자유파일명.py
 ```
 
 ## 3. 코드 설명
@@ -83,7 +74,7 @@ python scripts/progress.py
 문제 하나당 커밋 하나를 권장합니다.
 
 ```bash
-git add solutions/week01/정현수/SWEA_1954_달팽이숫자.py
+git add solutions/week01/YeoroJeong/SWEA_1954/solution.py
 git commit -m "[W01][SWEA-1954] 풀이 추가"
 ```
 
