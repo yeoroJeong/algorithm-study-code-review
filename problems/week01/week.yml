@@ -1,0 +1,58 @@
+week: 1
+
+period:
+  start: 2026-07-27
+  end: 2026-08-02
+
+deadline: "2026-08-02 23:59"
+
+# id는 제출 파일명과 일치해야 합니다.
+# 예: problems/week01/SWEA_1954/yeoroJeong.py
+members:
+  - id: yeoroJeong
+    name: 정현수
+
+  # 아래 형식으로 스터디원을 추가하세요.
+  # - id: github-id
+  #   name: 이름
+  #
+  # 예전 파일명도 제출로 인정하려면 aliases를 사용합니다.
+  # - id: github-id
+  #   name: 이름
+  #   aliases:
+  #     - old-file-name
+
+problems:
+  - site: SWEA
+    number: "1954"
+    title: 달팽이 숫자
+    difficulty: D2
+    category: 구현
+    folder: SWEA_1954
+    url: ""
+
+  - site: SWEA
+    number: "1959"
+    title: 두 개의 숫자열
+    difficulty: D2
+    category: 완전 탐색
+    folder: SWEA_1959
+    url: ""
+
+  - site: SWEA
+    number: "12712"
+    title: 파리퇴치3
+    difficulty: D2
+    category: 구현
+    folder: SWEA_12712
+    url: ""
+
+submission:
+  extensions:
+    - .py
+    - .java
+    - .cpp
+
+notes: |
+  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
+  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.
