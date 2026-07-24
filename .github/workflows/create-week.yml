@@ -1,0 +1,78 @@
+name: Create Weekly Setup
+run-name: "Create week ${{ inputs.week }} setup"
+
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "주차 번호 (예: 2)"
+        required: true
+        type: number
+      start_date:
+        description: "시작일 YYYY-MM-DD"
+        required: false
+        type: string
+      end_date:
+        description: "종료일 YYYY-MM-DD"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-week:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Create weekly folders and document
+        run: |
+          python scripts/create_week.py "${{ inputs.week }}" \
+            --start "${{ inputs.start_date }}" \
+            --end "${{ inputs.end_date }}"
+
+      - name: Commit and push branch
+        id: commit
+        env:
+          WEEK: ${{ inputs.week }}
+        run: |
+          PADDED_WEEK=$(printf "%02d" "$WEEK")
+          BRANCH="chore/week-${PADDED_WEEK}-setup"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add "problems/week${PADDED_WEEK}" "solutions/week${PADDED_WEEK}"
+
+          if git diff --cached --quiet; then
+            echo "변경 사항이 없습니다. 이미 생성된 주차인지 확인해주세요."
+            exit 1
+          fi
+
+          git commit -m "[CHORE] ${PADDED_WEEK}주차 구조 생성"
+          git push -u origin "$BRANCH"
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ inputs.week }}
+          BRANCH: ${{ steps.commit.outputs.branch }}
+        run: |
+          PADDED_WEEK=$(printf "%02d" "$WEEK")
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "[CHORE] W${PADDED_WEEK} 주차 구조 생성" \
+            --body "W${PADDED_WEEK} 문제 문서와 멤버별 풀이 폴더를 생성했습니다. 문제와 일정을 채운 뒤 병합해주세요."

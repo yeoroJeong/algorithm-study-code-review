@@ -1,0 +1,54 @@
+name: "📅 주간 문제 및 일정"
+description: "이번 주 문제, 일정, 발표자를 한 번에 등록합니다."
+title: "[W__] 주간 문제 및 일정"
+labels: []
+body:
+  - type: input
+    id: week
+    attributes:
+      label: 주차
+      description: "예: W02"
+      placeholder: "W02"
+    validations:
+      required: true
+
+  - type: input
+    id: period
+    attributes:
+      label: 진행 기간
+      placeholder: "2026-07-27 ~ 2026-08-02"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problems
+    attributes:
+      label: 문제 목록
+      description: "문제 링크, 난이도, 알고리즘 분류를 작성해주세요."
+      placeholder: |
+        1. [SWEA 1954 달팽이 숫자](링크) · D2 · 구현
+        2. [BOJ 2178 미로 탐색](링크) · Silver 1 · BFS
+    validations:
+      required: true
+
+  - type: textarea
+    id: presenters
+    attributes:
+      label: 발표 또는 리뷰 담당
+      placeholder: |
+        - 문제 1: 정현수
+        - 문제 2: 김대원
+
+  - type: input
+    id: deadline
+    attributes:
+      label: PR 마감
+      placeholder: "2026-08-01 23:59"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notice
+    attributes:
+      label: 추가 안내
+      placeholder: "이번 주에는 각자 최소 1개의 PR 리뷰를 작성합니다."

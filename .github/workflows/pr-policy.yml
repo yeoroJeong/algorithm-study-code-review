@@ -1,0 +1,27 @@
+name: PR Policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-pr:
+    name: Validate PR title and body
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate PR metadata
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: python scripts/validate_pr.py --event "$EVENT_PATH"

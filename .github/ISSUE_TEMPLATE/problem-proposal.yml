@@ -1,0 +1,66 @@
+name: "🧩 문제 제안"
+description: "스터디에서 함께 풀 문제를 제안합니다."
+title: "[문제 제안] "
+labels: []
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 플랫폼
+      options:
+        - SWEA
+        - BOJ
+        - Programmers
+        - 기타
+    validations:
+      required: true
+
+  - type: input
+    id: problem
+    attributes:
+      label: 문제 번호와 이름
+      placeholder: "SWEA 1954 달팽이 숫자"
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 문제 링크
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: difficulty
+    attributes:
+      label: 난이도
+      placeholder: "D2 / Silver 1"
+    validations:
+      required: true
+
+  - type: input
+    id: algorithm
+    attributes:
+      label: 알고리즘 분류
+      placeholder: "구현, BFS"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 제안 이유
+      description: "어떤 개념을 연습하기 좋은 문제인지 작성해주세요."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: estimated_time
+    attributes:
+      label: 예상 풀이 시간
+      options:
+        - 30분 이하
+        - 30분~1시간
+        - 1~2시간
+        - 2시간 이상
