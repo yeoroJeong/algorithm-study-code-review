@@ -1,0 +1,56 @@
+week: 2
+period:
+  start: '2026-08-03'
+  end: '2026-08-09'
+deadline: 2026-08-09 23:59
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+problems:
+  쉬움:
+  - site: SWEA
+    number: '1952'
+    title: 수영장
+    difficulty: 모의 SW 역량테스트
+    category: 동적 계획법 / 완전 탐색
+    folder: SWEA_1952
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq
+  중간:
+  - site: SWEA
+    number: '1949'
+    title: 등산로 조성
+    difficulty: 모의 SW 역량테스트
+    category: DFS / 백트래킹 / 완전 탐색
+    folder: SWEA_1949
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq
+  어려움:
+  - site: SWEA
+    number: '1767'
+    title: 프로세서 연결하기
+    difficulty: 모의 SW 역량테스트
+    category: 백트래킹 / 구현 / 가지치기
+    folder: SWEA_1767
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV4suNtaXFEDFAUf
+submission:
+  extensions:
+  - .py
+  - .java
+  - .cpp
+notes: '- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.
+
+  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
+
+  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.
+
+  '
