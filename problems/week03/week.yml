@@ -1,0 +1,70 @@
+week: 3
+period:
+  start: '2026-08-10'
+  end: '2026-08-16'
+deadline: 2026-08-16 23:59
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+problems:
+  쉬움:
+  - site: SWEA
+    number: BLOCK_REMOVAL
+    title: 블록 제거 게임
+    difficulty: '-'
+    category: 구현 / 상태 변화 처리 / 완전 탐색
+    folder: SWEA_BLOCK_REMOVAL
+    url: ''
+  중간:
+  - site: SWEA
+    number: '4013'
+    title: 특이한 자석
+    difficulty: 모의 SW 역량테스트
+    category: 시뮬레이션 / 회전 전파 / 조건 구현
+    folder: SWEA_4013
+    url: https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4013
+  - site: SWEA
+    number: '4008'
+    title: 숫자 만들기
+    difficulty: 모의 SW 역량테스트
+    category: 완전 탐색 / DFS / 백트래킹
+    folder: SWEA_4008
+    url: https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=4008
+  어려움:
+  - site: SWEA
+    number: '2105'
+    title: 디저트 카페
+    difficulty: 모의 SW 역량테스트
+    category: 대각선 이동 / DFS / 방문 상태 관리 / 백트래킹
+    folder: SWEA_2105
+    url: https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=2105
+  - site: SWEA
+    number: '5656'
+    title: 벽돌 깨기
+    difficulty: 모의 SW 역량테스트
+    category: 시뮬레이션 / DFS / 백트래킹 / 연쇄 제거 / 중력 처리
+    folder: SWEA_5656
+    url: https://swexpertacademy.com/main/code/problem/problemList.do?problemTitle=5656
+submission:
+  extensions:
+  - .py
+  - .java
+  - .cpp
+notes: '- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.
+
+  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
+
+  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.
+
+  '
