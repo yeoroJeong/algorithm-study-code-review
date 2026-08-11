@@ -1,6 +1,6 @@
 /*
     AI 사용
-    - DFS+ backtracking , BFS로 중력 구현
+    - 재귀 + backtracking , BFS로 중력 구현
     - gravity 부분에서 AI 사용
 
 */
@@ -151,7 +151,7 @@ void dfs(vector<vector<int>>& blocks, int ballCnt, int &minLeftBlocks)
         return;
     }
     
-    // 블록을 떨어뜨리는 위치마다 dfs
+    // 블록을 떨어뜨리는 위치마다 재귀
     for (auto& pos : hitPositions)
     {
         // 임시배열로 원본에 손상 X
