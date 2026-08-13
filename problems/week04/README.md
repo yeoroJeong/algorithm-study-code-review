@@ -17,7 +17,7 @@
 
 | 사이트 | 문제 | 공식 난이도 | 분류 | 문제 폴더 |
 |---|---|:---:|---|---|
-| SWEA | [GEM_COLLECTION_ROBOT 보석 수집 로봇](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AZwmBfua3q3HBIT3) | - | 탐색 / 구현 / 조건 처리 | `SWEA_GEM_COLLECTION_ROBOT` |
+| SWEA | [26070 보석 수집 로봇](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AZwmBfua3q3HBIT3) | - | 탐색 / 구현 / 조건 처리 | `SWEA_26070` |
 
 ### 🔴 어려움
 
@@ -28,7 +28,7 @@
 
 ## 제출 현황
 
-| 스터디원 | 5658 | GEM_COLLECTION_ROBOT | 4014 | 2117 | 진행률 |
+| 스터디원 | 5658 | 26070 | 4014 | 2117 | 진행률 |
 |---|:---:|:---:|:---:|:---:|:---:|
 | 정현수 (`YeoroJeong`) | ❌ | ❌ | ❌ | ❌ | **0/4** |
 | 김대원 (`DaewonKim`) | ❌ | ❌ | ❌ | ❌ | **0/4** |
