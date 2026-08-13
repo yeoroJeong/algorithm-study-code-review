@@ -28,11 +28,11 @@ problems:
     url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRUN9KfZ8DFAUo
   중간:
   - site: SWEA
-    number: GEM_COLLECTION_ROBOT
+    number: '26070'
     title: 보석 수집 로봇
     difficulty: '-'
     category: 탐색 / 구현 / 조건 처리
-    folder: SWEA_GEM_COLLECTION_ROBOT
+    folder: SWEA_26070
     url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AZwmBfua3q3HBIT3
   어려움:
   - site: SWEA
