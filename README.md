@@ -23,12 +23,12 @@ git switch main
 git pull origin main
 
 # 2. 이번 주 개인 브랜치 만들기
-git switch -c week01/github-id
+git switch -c week04/github-id
 
 # 3. 풀이 후 저장
 git add .
-git commit -m "[W01][SWEA-1954] 풀이 추가"
-git push -u origin week01/github-id
+git commit -m "[W04][SWEA-5658] 풀이 추가"
+git push -u origin week04/github-id
 ```
 
 GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
@@ -41,15 +41,15 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
-| 1주차 | [`problems/week01`](problems/week01/README.md) | 진행 중 |
+| 4주차 | [`problems/week04`](problems/week04/README.md) | 진행 중 |
 
 새 주차는 GitHub의 **Actions → Create Weekly Setup → Run workflow**에서 문제 목록과 기간을 입력해 생성합니다. 로컬에서 생성할 때는 같은 형식의 문제 목록 파일을 준비합니다.
 
 ```bash
-python scripts/create_week.py 2 \
-  --start 2026-08-03 \
-  --end 2026-08-09 \
-  --problems-file week02-problems.txt
+python scripts/create_week.py 4 \
+  --start 2026-08-17 \
+  --end 2026-08-23 \
+  --problems-file week04-problems.txt
 ```
 
 GitHub Actions를 사용하면 문제별 개인 폴더가 포함된 새 브랜치와 PR까지 자동 생성됩니다.

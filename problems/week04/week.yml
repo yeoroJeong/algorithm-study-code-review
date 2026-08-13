@@ -1,0 +1,63 @@
+week: 4
+period:
+  start: '2026-08-17'
+  end: '2026-08-23'
+deadline: 2026-08-23 23:59
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+problems:
+  쉬움:
+  - site: SWEA
+    number: '5658'
+    title: 보물상자 비밀번호
+    difficulty: 모의 SW 역량테스트
+    category: 문자열 회전 / 중복 제거 / 정렬 / 16진수 변환
+    folder: SWEA_5658
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRUN9KfZ8DFAUo
+  중간:
+  - site: SWEA
+    number: GEM_COLLECTION_ROBOT
+    title: 보석 수집 로봇
+    difficulty: '-'
+    category: 탐색 / 구현 / 조건 처리
+    folder: SWEA_GEM_COLLECTION_ROBOT
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AZwmBfua3q3HBIT3
+  어려움:
+  - site: SWEA
+    number: '4014'
+    title: 활주로 건설
+    difficulty: 모의 SW 역량테스트
+    category: 시뮬레이션 / 경사로 설치 조건 / 행·열 검사 / 예외 처리
+    folder: SWEA_4014
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWJfikDKDXkDFAXc
+  - site: SWEA
+    number: '2117'
+    title: 홈 방범 서비스
+    difficulty: 모의 SW 역량테스트
+    category: 완전 탐색 / BFS / 서비스 범위와 운영 비용 계산
+    folder: SWEA_2117
+    url: https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V61LqAf8DFAWu
+submission:
+  extensions:
+  - .py
+  - .java
+  - .cpp
+notes: '- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.
+
+  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.
+
+  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.
+
+  '
