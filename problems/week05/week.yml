@@ -1,0 +1,50 @@
+week: 5
+period:
+  start: '2026-08-24'
+  end: '2026-08-30'
+deadline: 2026-08-30 23:59
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+problems:
+  쉬움:
+  - site: SWEA
+    number: '24703'
+    title: '[Pro] 어항물채우기'
+    difficulty: D5
+    category: '-'
+    folder: SWEA_24703
+    url: ''
+  중간: []
+  어려움:
+  - site: SWEA
+    number: '24996'
+    title: '[Pro] 카페2'
+    difficulty: D6
+    category: '-'
+    folder: SWEA_24996
+    url: ''
+  - site: SWEA
+    number: '24997'
+    title: '[Pro] 택시 호출 서비스'
+    difficulty: D6
+    category: '-'
+    folder: SWEA_24997
+    url: ''
+submission:
+  extensions:
+  - .py
+  - .java
+  - .cpp
+notes: '- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.\n\n  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.\n\n  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.\n\n  '
