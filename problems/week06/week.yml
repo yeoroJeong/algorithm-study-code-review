@@ -1,0 +1,46 @@
+week: 6
+period:
+  start: '2026-08-31'
+  end: '2026-09-06'
+deadline: 2026-09-06 23:59
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+problems:
+  쉬움: []
+  중간:
+  - site: SWEA
+    number: TOWER_DEFENSE
+    title: '[Pro] 타워디펜스게임'
+    difficulty: D5
+    category: '-'
+    folder: SWEA_TOWER_DEFENSE
+    url: ''
+  어려움:
+  - site: ETC
+    number: CLOCKWISE_CITY
+    title: Clockwise City (B형 원복)
+    difficulty: B형
+    category: 최단 경로
+    folder: ETC_CLOCKWISE_CITY
+    url: ''
+submission:
+  extensions:
+  - .py
+  - .java
+  - .cpp
+notes: '- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.\n
+  - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.\n
+  - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.\n
+  '
