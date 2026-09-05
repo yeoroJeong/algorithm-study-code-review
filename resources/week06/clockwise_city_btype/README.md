@@ -1,17 +1,17 @@
 # Clockwise City - B형 원복 실습 패키지
 
-[문제 전체 설명](problem.md) | [구현 파일](user_solution.cpp) | [채점 코드](main.cpp) | [예시 입력](input.txt) | [예시 출력](output.txt)
+[문제 전체 설명](problem.md) | [구현 파일](user_solution.cc) | [채점 코드](main.cc) | [예시 입력](input.txt) | [예시 출력](output.txt)
 
 ## 실행 방법
 
 ```bash
-g++ -std=c++17 -O2 main.cpp user_solution.cpp -o clockwise_city
+g++ -std=c++17 -O2 main.cc user_solution.cc -o clockwise_city
 ./clockwise_city < input.txt
 ```
 
-정상 구현이면 각 테스트 케이스에서 `100`점이 출력됩니다. `main.cpp`는 수정하지 않고 `user_solution.cpp`의 세 API를 구현합니다.
+정상 구현이면 각 테스트 케이스에서 `100`점이 출력됩니다. `main.cc`는 수정하지 않고 `user_solution.cc`의 세 API를 구현합니다.
 
-## 구현할 코드: `user_solution.cpp`
+## 구현할 코드: `user_solution.cc`
 
 ```cpp
 #include <bits/stdc++.h>
@@ -36,7 +36,7 @@ int move(int mStartID, int mEndID, int M, int mStopover[])
 }
 ```
 
-## 채점 및 실행 코드: `main.cpp`
+## 채점 및 실행 코드: `main.cc`
 
 ```cpp
 #ifndef _CRT_SECURE_NO_WARNINGS
