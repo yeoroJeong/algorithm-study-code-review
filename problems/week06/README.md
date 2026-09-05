@@ -34,7 +34,6 @@
 - 브랜치: `week06/GitHub아이디`
 - PR 제목: `[W06] 이름 주간 풀이`
 - 제출 경로: `problems/week06/문제폴더/개인폴더/자유로운파일명.확장자`
-- Clockwise City의 [원복 문제·구현 파일·채점 코드·예시 입출력](https://github.com/yeoroJeong/algorithm-study-code-review/tree/main/resources/week06/clockwise_city_btype)을 GitHub 프리뷰에서 바로 복사할 수 있습니다.
 - 개인 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.
 - 다른 스터디원의 PR을 최소 1개 리뷰합니다.
 
