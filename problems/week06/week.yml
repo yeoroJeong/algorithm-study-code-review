@@ -34,7 +34,7 @@ problems:
     difficulty: B형
     category: 최단 경로
     folder: ETC_CLOCKWISE_CITY
-    url: ''
+    url: https://github.com/yeoroJeong/algorithm-study-code-review/blob/main/resources/week06/clockwise_city_btype/problem.md
 submission:
   extensions:
   - .py
