@@ -35,7 +35,12 @@
 - PR 제목: `[W06] 이름 주간 풀이`
 - 제출 경로: `problems/week06/문제폴더/개인폴더/자유로운파일명.확장자`
 - Clockwise City의 [원복 문제 설명](https://github.com/yeoroJeong/algorithm-study-code-review/blob/main/resources/week06/clockwise_city_btype/problem.md)을 GitHub에서 확인할 수 있습니다. 채점 코드와 로컬 테스트 자료는 별도 공유된 ZIP을 사용합니다.
+- 개인 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.
 - 다른 스터디원의 PR을 최소 1개 리뷰합니다.
+
+## 추가 안내
+
+- 파일명은 자유이며, 반드시 해당 문제 폴더 아래 본인의 개인 폴더에 제출합니다.\n - 다른 스터디원의 PR을 최소 1개 리뷰해주세요.\n - 리뷰 반영이 끝난 뒤 `main` 브랜치로 병합합니다.\n
 
 ---
 
