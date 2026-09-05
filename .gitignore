@@ -30,6 +30,7 @@ htmlcov/
 input.txt
 output.txt
 result.txt
+problems/week06/ETC_CLOCKWISE_CITY/clockwise_city_btype.zip
 
 # Logs and temporary files
 *.log
