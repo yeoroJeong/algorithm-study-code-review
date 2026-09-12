@@ -24,7 +24,7 @@
 | 스터디원 | TOWER_DEFENSE | CLOCKWISE_CITY | 진행률 |
 |---|:---:|:---:|:---:|
 | 정현수 (`YeoroJeong`) | ✅ | ✅ | **2/2** |
-| 김대원 (`DaewonKim`) | ❌ | ❌ | **0/2** |
+| 김대원 (`DaewonKim`) | ✅ | ❌ | **1/2** |
 | 이지은 (`CryingDitto`) | ❌ | ❌ | **0/2** |
 | 임정현 (`JeonghyeonIm`) | ✅ | ❌ | **1/2** |
 | 최수빈 (`ChoiSooBin`) | ❌ | ❌ | **0/2** |
