@@ -26,7 +26,7 @@
 | 정현수 (`YeoroJeong`) | ✅ | ✅ | **2/2** |
 | 김대원 (`DaewonKim`) | ❌ | ❌ | **0/2** |
 | 이지은 (`CryingDitto`) | ❌ | ❌ | **0/2** |
-| 임정현 (`JeonghyeonIm`) | ❌ | ❌ | **0/2** |
+| 임정현 (`JeonghyeonIm`) | ✅ | ❌ | **1/2** |
 | 최수빈 (`ChoiSooBin`) | ❌ | ❌ | **0/2** |
 
 ## 제출 규칙
