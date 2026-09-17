@@ -1,9 +1,13 @@
-# 🐍 Algorithm Study | Python
+# 🌱 씨 심은 데 쁠 난다
 
 [![Repository Check](https://github.com/yeoroJeong/algorithm-study-code-review/actions/workflows/repository-check.yml/badge.svg)](https://github.com/yeoroJeong/algorithm-study-code-review/actions/workflows/repository-check.yml)
 [![PR Policy](https://github.com/yeoroJeong/algorithm-study-code-review/actions/workflows/pr-policy.yml/badge.svg)](https://github.com/yeoroJeong/algorithm-study-code-review/actions/workflows/pr-policy.yml)
 
-김대원 · 정현수 · 임정현 · 이지은 · 최수빈이 함께 사용하는 **Python 알고리즘 풀이·코드리뷰 저장소**입니다.
+김대원 · 정현수 · 임정현 · 이지은 · 최수빈이 함께하는 **멀티 언어 알고리즘 풀이·코드리뷰 스터디**입니다.
+
+> **씨 심은 데 쁠 난다** — 매주 꾸준히 풀이를 심고, 코드 리뷰로 실력을 키웁니다.
+>
+> 사용 언어: `Java` · `C` · `C++` · `Python`
 
 정답 코드만 모으는 것이 아니라 다음 세 가지를 남기는 것을 목표로 합니다.
 
@@ -23,12 +27,12 @@ git switch main
 git pull origin main
 
 # 2. 이번 주 개인 브랜치 만들기
-git switch -c week04/github-id
+git switch -c week07/github-id
 
 # 3. 풀이 후 저장
 git add .
-git commit -m "[W04][SWEA-5658] 풀이 추가"
-git push -u origin week04/github-id
+git commit -m "[W07][SWEA-OTT] 풀이 추가"
+git push -u origin week07/github-id
 ```
 
 GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
@@ -37,19 +41,38 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 
 ---
 
+## 📚 지금까지 공부한 내용
+
+| 주차 | 주요 문제·주제 | 핵심 알고리즘 | 진행 상태 |
+|---|---|---|:---:|
+| [1주차](problems/week01/README.md) | 달팽이 숫자, 파리 퇴치, Sum, 최대 상금 | 구현, 2차원 배열, 완전탐색, 백트래킹 | 완료 |
+| [2주차](problems/week02/README.md) | 수영장, 등산로 조성, 프로세서 연결하기 | DP, DFS, 백트래킹, 가지치기 | 완료 |
+| [3주차](problems/week03/README.md) | 블록 제거, 특이한 자석, 숫자 만들기, 디저트 카페, 벽돌 깨기 | 시뮬레이션, DFS, 상태 관리, 연쇄 처리 | 완료 |
+| [4주차](problems/week04/README.md) | 보물상자 비밀번호, 보석 수집 로봇, 활주로 건설, 홈 방범 서비스 | 문자열 회전, 탐색, 시뮬레이션, BFS | 완료 |
+| [5주차](problems/week05/README.md) | Pro 어항물채우기, 카페2, 택시 호출 서비스 | 자료구조, 구현, 최적화 | 완료 |
+| [6주차](problems/week06/README.md) | Pro 타워디펜스게임, Clockwise City | 구현, 그래프 탐색, 최단 경로, 상태 설계 | 보완 중 |
+| [7주차](problems/week07/README.md) | SWEA OTT, 일타싸피 학습 | Pro 시험 대비, 자료구조, 각도·경로·파워 설계 | 진행 중 |
+| 8주차 | 전체 회고 및 취약 유형 복습 | Review | 예정 |
+
+---
+
 ## 📅 현재 주차
+
+현재 저장소에는 **7주차**까지 문제 구조와 제출 현황이 반영되어 있습니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
-| 4주차 | [`problems/week04`](problems/week04/README.md) | 진행 중 |
+| 7주차 | [`problems/week07`](problems/week07/README.md) | 진행 중 |
+| 6주차 | [`problems/week06`](problems/week06/README.md) | 보완 중 |
+| 1–5주차 | [`problems`](problems) | 완료 |
 
 새 주차는 GitHub의 **Actions → Create Weekly Setup → Run workflow**에서 문제 목록과 기간을 입력해 생성합니다. 로컬에서 생성할 때는 같은 형식의 문제 목록 파일을 준비합니다.
 
 ```bash
-python scripts/create_week.py 4 \
-  --start 2026-08-17 \
-  --end 2026-08-23 \
-  --problems-file week04-problems.txt
+python scripts/create_week.py 7 \
+  --start 2026-09-07 \
+  --end 2026-09-13 \
+  --problems-file week07-problems.txt
 ```
 
 GitHub Actions를 사용하면 문제별 개인 폴더가 포함된 새 브랜치와 PR까지 자동 생성됩니다.
