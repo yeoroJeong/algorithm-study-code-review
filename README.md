@@ -41,7 +41,9 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
-| 4주차 | [`problems/week04`](problems/week04/README.md) | 진행 중 |
+| 8주차 | [`problems/week08`](problems/week08/README.md) | 각자 문제 선정·풀이 진행 중 |
+
+이번 주는 각자 문제를 한 개 이상 선정해 풀고, 스터디에서 문제와 풀이를 설명합니다. 문제를 정하면 [8주차 안내](problems/week08/README.md)에 등록 절차를 확인하세요.
 
 새 주차는 GitHub의 **Actions → Create Weekly Setup → Run workflow**에서 문제 목록과 기간을 입력해 생성합니다. 로컬에서 생성할 때는 같은 형식의 문제 목록 파일을 준비합니다.
 
