@@ -1,0 +1,62 @@
+week: 9
+period:
+  start: '2026-10-05'
+  end: '2026-10-11'
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+  github: ''
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+  github: ''
+problems:
+  쉬움:
+  - site: Programmers
+    number: '340213'
+    title: '[PCCP 기출문제] 1번 / 동영상 재생기'
+    folder: Programmers_340213
+    difficulty: Lv. 1
+    category: 구현
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/340213
+  중간:
+  - site: Programmers
+    number: '340212'
+    title: '[PCCP 기출문제] 2번 / 퍼즐 게임 챌린지'
+    folder: Programmers_340212
+    difficulty: Lv. 2
+    category: 이분 탐색
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/340212
+  - site: Programmers
+    number: '340211'
+    title: '[PCCP 기출문제] 3번 / 충돌위험 찾기'
+    folder: Programmers_340211
+    difficulty: Lv. 2
+    category: 시뮬레이션
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/340211
+  어려움:
+  - site: Programmers
+    number: '340210'
+    title: '[PCCP 기출문제] 4번 / 수식 복원하기'
+    folder: Programmers_340210
+    difficulty: Lv. 3
+    category: 구현
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/340210
+submission:
+  extensions:
+  - .png
+  - .jpg
+  - .jpeg
+  - .webp
+notes: |
+  풀이 결과 사진을 각 문제의 본인 폴더에 올립니다. 파일명은 자유입니다.
+  예: problems/week09/Programmers_340213/YeoroJeong/result.png
+  사진에는 본인이 푼 문제와 결과가 식별되도록 해주세요. PR 본문에는 접근 방법과 리뷰받고 싶은 부분을 공유합니다.

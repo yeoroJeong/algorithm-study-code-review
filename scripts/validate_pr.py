@@ -19,6 +19,10 @@ GENERAL_TITLE_PATTERN = re.compile(r"^\[(DOCS|CHORE|FIX)\]\s+.+$")
 REQUIRED_WEEKLY_SECTIONS = ("## 💡 핵심 접근", "## 🔍 리뷰 요청")
 PLACEHOLDER_LINES = {"-", "없음", "해당 없음", "n/a", "na"}
 LANGUAGE_BY_EXTENSION = {
+    ".png": "이미지",
+    ".jpg": "이미지",
+    ".jpeg": "이미지",
+    ".webp": "이미지",
     ".py": "Python",
     ".java": "Java",
     ".cpp": "C++",
@@ -318,6 +322,9 @@ def validate_weekly_pr(
         study_config = load_json(study_config_path)
         week_config = load_yaml(week_config_path)
         allowed_extensions = normalize_extensions(study_config)
+        weekly_extensions = week_config.get("submission", {}).get("extensions")
+        if weekly_extensions:
+            allowed_extensions &= {str(extension).lower() for extension in weekly_extensions}
         free_choice = week_config.get("format") == "free_choice"
         solutions, malformed = parse_solution_changes(changes, allowed_extensions, free_choice)
         members = normalize_members(week_config)
@@ -334,8 +341,8 @@ def validate_weekly_pr(
 
     if not solutions:
         errors.append(
-            f"{week_code} 풀이 PR에는 허용된 코드 파일이 최소 한 개 필요합니다. "
-            f"예: problems/{week_folder}/" + ("개인폴더/문제폴더" if free_choice else "문제폴더/개인폴더") + "/solution.py"
+            f"{week_code} 풀이 PR에는 해당 주차에 허용된 제출 파일이 최소 한 개 필요합니다. "
+            f"예: problems/{week_folder}/" + ("개인폴더/문제폴더" if free_choice else "문제폴더/개인폴더") + "/solution.png"
         )
         return errors
 
