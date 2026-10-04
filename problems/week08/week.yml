@@ -1,4 +1,5 @@
 week: 8
+format: free_choice
 period:
   start: '2026-09-28'
   end: '2026-10-04'
@@ -18,25 +19,9 @@ members:
 - folder: ChoiSooBin
   name: 최수빈
   github: ''
-problems:
-- site: ETC
-  number: wall_break_escape
-  title: 벽을 한 번 부수고 탈출하기
-  difficulty: 미확인
-  category: BFS, 상태 분리
-  folder: ETC_wall_break_escape
-  url: ''
-- site: ETC
-  number: task_assignment
-  title: 최소 시간 업무 배정
-  difficulty: 미확인
-  category: 백트래킹, 가지치기
-  folder: ETC_task_assignment
-  url: ''
 submission:
   extensions:
   - .py
   - .java
   - .cpp
-notes: 각자 문제 1개 이상 선정 후 풀이 설명. 공식 문제명·번호·링크와 제출 마감은 미확인. 설명형 제목과 내부 식별자를 사용합니다. 기간은
-  노션 8주차 기준입니다.
+notes: 각자 원하는 문제를 풀고 풀이를 공유합니다. 공통 지정 문제나 문제별 완료율은 없습니다.

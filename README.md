@@ -52,22 +52,22 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 | [5주차](problems/week05/README.md) | Pro 어항물채우기, 카페2, 택시 호출 서비스 | 자료구조, 구현, 최적화 | 완료 |
 | [6주차](problems/week06/README.md) | Pro 타워디펜스게임, Clockwise City | 구현, 그래프 탐색, 최단 경로, 상태 설계 | 보완 중 |
 | [7주차](problems/week07/README.md) | SWEA OTT, 일타싸피 학습 | Pro 시험 대비, 자료구조, 각도·경로·파워 설계 | 진행 중 |
-| 8주차 | 전체 회고 및 취약 유형 복습 | Review | 예정 |
+| [8주차](problems/week08/README.md) | 각자 선택한 문제 풀이·공유 | 자유 풀이 | 제출물 정리 |
 
 ---
 
 ## 📅 현재 주차
 
-현재 **8주차**는 각자 문제를 선정하는 중입니다. 선정된 문제는 주차 설정에 등록한 뒤 풀이를 제출합니다.
+**8주차**는 공통 지정 문제 없이 각자 원하는 문제를 풀고 공유했습니다. [사람별 풀이 목록](problems/week08/README.md)에서 제출된 파일을 볼 수 있습니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
-| 8주차 | [`problems/week08`](problems/week08/README.md) | 각자 문제 선정·풀이 진행 중 |
+| 8주차 | [`problems/week08`](problems/week08/README.md) | 자유 풀이 공유 |
 | 7주차 | [`problems/week07`](problems/week07/README.md) | 이전 주차 |
 | 6주차 | [`problems/week06`](problems/week06/README.md) | 보완 중 |
 | 1–5주차 | [`problems`](problems) | 완료 |
 
-이번 주는 각자 문제를 한 개 이상 선정해 풀고, 스터디에서 문제와 풀이를 설명합니다. 문제를 정하면 [8주차 안내](problems/week08/README.md)에 등록 절차를 확인하세요.
+8주차는 문제별 공통 완료율을 사용하지 않습니다. 제출 경로는 `problems/week08/개인폴더/문제폴더/풀이파일`입니다.
 
 새 주차는 GitHub의 **Actions → Create Weekly Setup → Run workflow**에서 문제 목록과 기간을 입력해 생성합니다. 로컬에서 생성할 때는 같은 형식의 문제 목록 파일을 준비합니다.
 

@@ -131,6 +131,7 @@ def normalize_extensions(study_config: dict[str, Any]) -> set[str]:
 def parse_solution_changes(
     changes: list[tuple[str, Path]],
     allowed_extensions: set[str],
+    free_choice: bool = False,
 ) -> tuple[list[ChangedSolution], list[str]]:
     solutions: list[ChangedSolution] = []
     malformed: list[str] = []
@@ -150,7 +151,11 @@ def parse_solution_changes(
             malformed.append(path.as_posix())
             continue
 
-        week_folder, problem_folder, member_folder = parts[1:4]
+        week_folder = parts[1]
+        if free_choice:
+            member_folder, problem_folder = parts[2:4]
+        else:
+            problem_folder, member_folder = parts[2:4]
         solutions.append(ChangedSolution(
             status=status,
             path=path,
@@ -225,6 +230,7 @@ def build_summary(
     member: dict[str, str],
     problems: list[dict[str, str]],
     solutions: list[ChangedSolution],
+    free_choice: bool = False,
 ) -> str:
     problem_by_folder = {problem["folder"]: problem for problem in problems}
     submitted_folders = sorted({solution.problem_folder for solution in solutions})
@@ -243,7 +249,10 @@ def build_summary(
     ]
 
     for folder in submitted_folders:
-        problem = problem_by_folder[folder]
+        problem = problem_by_folder.get(folder, {
+            "level": "자유 선정", "site": "-", "number": folder,
+            "title": "", "difficulty": "-", "url": "",
+        })
         folder_solutions = [item for item in solutions if item.problem_folder == folder]
         languages = sorted({
             LANGUAGE_BY_EXTENSION.get(item.extension, item.extension.lstrip(".").upper())
@@ -268,7 +277,7 @@ def build_summary(
 
     lines.extend([
         "",
-        "> 이 목록은 PR에서 변경된 `problems/weekXX/문제폴더/개인폴더/파일` 경로를 기준으로 자동 생성되었습니다.",
+        "> 이 목록은 PR에서 변경된 `problems/weekXX/개인폴더/문제폴더/파일` 경로를 기준으로 자동 생성되었습니다." if free_choice else "> 이 목록은 PR에서 변경된 `problems/weekXX/문제폴더/개인폴더/파일` 경로를 기준으로 자동 생성되었습니다.",
     ])
     return "\n".join(lines) + "\n"
 
@@ -309,23 +318,24 @@ def validate_weekly_pr(
         study_config = load_json(study_config_path)
         week_config = load_yaml(week_config_path)
         allowed_extensions = normalize_extensions(study_config)
-        solutions, malformed = parse_solution_changes(changes, allowed_extensions)
+        free_choice = week_config.get("format") == "free_choice"
+        solutions, malformed = parse_solution_changes(changes, allowed_extensions, free_choice)
         members = normalize_members(week_config)
-        problems = flatten_problems(week_config.get("problems"))
+        problems = [] if free_choice else flatten_problems(week_config.get("problems"))
     except PolicyError as error:
         errors.append(str(error))
         return errors
 
     if malformed:
         errors.append(
-            "풀이 파일은 'problems/weekXX/문제폴더/개인폴더/파일명' 구조여야 합니다: "
+            ("풀이 파일은 'problems/weekXX/개인폴더/문제폴더/파일명' 구조여야 합니다: " if free_choice else "풀이 파일은 'problems/weekXX/문제폴더/개인폴더/파일명' 구조여야 합니다: ")
             + ", ".join(malformed)
         )
 
     if not solutions:
         errors.append(
             f"{week_code} 풀이 PR에는 허용된 코드 파일이 최소 한 개 필요합니다. "
-            f"예: problems/{week_folder}/문제폴더/개인폴더/solution.py"
+            f"예: problems/{week_folder}/" + ("개인폴더/문제폴더" if free_choice else "문제폴더/개인폴더") + "/solution.py"
         )
         return errors
 
@@ -357,7 +367,7 @@ def validate_weekly_pr(
     unknown_problem_folders = sorted(
         {solution.problem_folder for solution in solutions} - set(problem_by_folder)
     )
-    if unknown_problem_folders:
+    if unknown_problem_folders and not free_choice:
         errors.append(
             f"{week_code}에 등록되지 않은 문제 폴더입니다: "
             + ", ".join(unknown_problem_folders)
@@ -373,7 +383,7 @@ def validate_weekly_pr(
 
     if not errors:
         summary_path.write_text(
-            build_summary(week_code, member, problems, solutions),
+            build_summary(week_code, member, problems, solutions, free_choice),
             encoding="utf-8",
         )
     return errors

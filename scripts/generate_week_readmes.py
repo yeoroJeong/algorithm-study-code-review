@@ -187,8 +187,51 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
     deadline = str(config.get("deadline", "")).strip()
     notes = str(config.get("notes", "")).strip()
     members = normalize_members(config.get("members"))
-    problems = normalize_problems(config.get("problems"))
     extensions = normalize_submission(config)["extensions"]
+
+    if config.get("format") == "free_choice":
+        lines = [
+            "<!-- AUTO-GENERATED FILE: 개인별 풀이 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->",
+            "",
+            f"# {markdown_escape(week_label)} 자유 풀이",
+            "",
+        ]
+        if start or end:
+            lines.extend([f"- **진행 기간:** {markdown_escape(start)} ~ {markdown_escape(end)}", ""])
+        lines.extend([
+            "각자 원하는 문제를 풀고 스터디에서 풀이를 공유합니다. 아래 목록은 저장소에 올라온 파일만 보여주며, 제출하지 않은 문제를 미완료로 표시하지 않습니다.",
+            "",
+            "## 사람별 풀이",
+            "",
+            "| 스터디원 | 문제 폴더 | 풀이 파일 |",
+            "|---|---|---|",
+        ])
+        for member in members:
+            folder = member["folder"]
+            member_directory = week_directory / folder
+            files = sorted(path for path in member_directory.rglob("*") if path.is_file() and path.suffix.lower() in extensions) if member_directory.is_dir() else []
+            label = f"[{markdown_escape(member['name'])}]({folder}/) (`{markdown_escape(folder)}`)"
+            if not files:
+                lines.append(f"| {label} | - | 등록된 풀이 없음 |")
+                continue
+            for index, path in enumerate(files):
+                relative = path.relative_to(week_directory).as_posix()
+                problem = path.relative_to(member_directory).parts[0]
+                lines.append(f"| {label if index == 0 else ''} | `{markdown_escape(problem)}` | [{markdown_escape(path.name)}]({relative}) |")
+        lines.extend([
+            "",
+            "## 제출 방법",
+            "",
+            f"- `problems/{week_directory.name}/내개인폴더/문제식별폴더/풀이파일`에 제출합니다.",
+            "- 문제식별폴더는 사이트와 문제 번호 또는 알아보기 쉬운 영문 이름으로 만듭니다.",
+            "- PR 본문에 문제 제목·링크와 핵심 접근을 적습니다. 공통 문제 등록은 필요하지 않습니다.",
+            "",
+        ])
+        if notes:
+            lines.extend(["## 추가 안내", "", notes, ""])
+        return "\n".join(lines)
+
+    problems = normalize_problems(config.get("problems"))
 
     lines = [
         "<!-- AUTO-GENERATED FILE: week.yml과 문제별 개인 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->",

@@ -18,9 +18,23 @@ from generate_week_readmes import (
 def sync_week(config_path: Path) -> list[Path]:
     config = load_config(config_path)
     members = normalize_members(config.get("members"))
-    problems = normalize_problems(config.get("problems"))
     week_directory = config_path.parent
     created: list[Path] = []
+
+    if config.get("format") == "free_choice":
+        for member in members:
+            member_directory = week_directory / member["folder"]
+            member_directory.mkdir(parents=True, exist_ok=True)
+            keep = member_directory / ".gitkeep"
+            has_real_file = any(path.is_file() and path.name != ".gitkeep" for path in member_directory.rglob("*"))
+            if has_real_file and keep.exists():
+                keep.unlink()
+            elif not has_real_file and not keep.exists():
+                keep.touch()
+                created.append(keep)
+        return created
+
+    problems = normalize_problems(config.get("problems"))
 
     for problem in problems:
         problem_directory = week_directory / problem["folder"]
