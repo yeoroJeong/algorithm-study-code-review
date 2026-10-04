@@ -85,7 +85,7 @@ def load_week_config(week_folder: str) -> tuple[dict[str, Any], set[str], set[st
         if isinstance(item, dict)
     }
     members.discard("")
-    problems = {item["folder"] for item in flatten_problems(data.get("problems"))}
+    problems = set() if data.get("format") == "free_choice" else {item["folder"] for item in flatten_problems(data.get("problems"))}
     return data, members, problems
 
 
@@ -97,6 +97,13 @@ def validate_week_structure(week_folder: str) -> list[str]:
         return [str(error)]
 
     week_directory = ROOT / "problems" / week_folder
+    if not problems:
+        for member in sorted(members):
+            member_directory = week_directory / member
+            if not member_directory.is_dir():
+                warnings.append(f"자동 생성 예정 개인 폴더: {member_directory.relative_to(ROOT)}")
+        return warnings
+
     for problem in sorted(problems):
         problem_directory = week_directory / problem
         if not problem_directory.is_dir():
@@ -121,19 +128,22 @@ def validate_source_file(path: Path, allowed_extensions: set[str]) -> tuple[list
         )
         return errors, warnings
 
-    week_folder, problem_folder, member_folder = parts[1:4]
+    week_folder, first_folder, second_folder = parts[1:4]
     extension = path.suffix.lower()
     if extension not in allowed_extensions:
         errors.append(f"{relative}: 허용되지 않은 확장자입니다: {extension}")
         return errors, warnings
 
     try:
-        _, members, problems = load_week_config(week_folder)
+        week_config, members, problems = load_week_config(week_folder)
     except (ValueError, yaml.YAMLError) as error:
         errors.append(str(error))
         return errors, warnings
 
-    if problem_folder not in problems:
+    free_choice = week_config.get("format") == "free_choice"
+    member_folder = first_folder if free_choice else second_folder
+    problem_folder = second_folder if free_choice else first_folder
+    if not free_choice and problem_folder not in problems:
         errors.append(f"{relative}: {week_folder}에 등록되지 않은 문제 폴더입니다: {problem_folder}")
     if member_folder not in members:
         errors.append(f"{relative}: {week_folder}에 등록되지 않은 개인 폴더입니다: {member_folder}")
@@ -172,7 +182,9 @@ def main() -> int:
 
     code_files = [
         path for path in candidates
-        if path.is_file() and path.suffix.lower() in allowed_extensions
+        if path.is_file()
+        and path.suffix.lower() in allowed_extensions
+        and path.relative_to(ROOT).parts[0] == "problems"
     ]
 
     week_folders: set[str] = set()

@@ -25,6 +25,7 @@ def main() -> int:
 
     for config_path in weeks:
         data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        free_choice = data.get("format") == "free_choice"
         raw = data.get("problems") or {}
         items = raw if isinstance(raw, list) else [item for group in raw.values() for item in (group or [])]
         problem_folders = [str(item.get("folder", "")) for item in items]
@@ -36,8 +37,12 @@ def main() -> int:
         counts: list[int] = []
         for member in members:
             count = 0
-            for problem in problem_folders:
-                directory = config_path.parent / problem / member["folder"]
+            directories = (
+                sorted((config_path.parent / member["folder"]).iterdir())
+                if free_choice and (config_path.parent / member["folder"]).is_dir()
+                else [config_path.parent / problem / member["folder"] for problem in problem_folders]
+            )
+            for directory in directories:
                 if directory.is_dir() and any(
                     path.is_file() and path.suffix.lower() in extensions
                     for path in directory.rglob("*")

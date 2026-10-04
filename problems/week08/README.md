@@ -1,38 +1,29 @@
-<!-- AUTO-GENERATED FILE: week.yml과 문제별 개인 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->
+<!-- AUTO-GENERATED FILE: 개인별 풀이 폴더를 기준으로 생성됩니다. 직접 수정하지 마세요. -->
 
-# 8주차 알고리즘 문제
+# 8주차 자유 풀이
 
 - **진행 기간:** 2026-09-28 ~ 2026-10-04
 
-## 문제 목록
+각자 원하는 문제를 풀고 스터디에서 풀이를 공유합니다. 아래 목록은 저장소에 올라온 파일만 보여주며, 제출하지 않은 문제를 미완료로 표시하지 않습니다.
 
-| 사이트 | 문제 | 공식 난이도 | 분류 | 문제 폴더 |
-|---|---|:---:|---|---|
-| ETC | wall_break_escape 벽을 한 번 부수고 탈출하기 | 미확인 | BFS, 상태 분리 | `ETC_wall_break_escape` |
-| ETC | task_assignment 최소 시간 업무 배정 | 미확인 | 백트래킹, 가지치기 | `ETC_task_assignment` |
+## 사람별 풀이
 
-## 제출 현황
+| 스터디원 | 문제 폴더 | 풀이 파일 |
+|---|---|---|
+| [정현수](YeoroJeong/) (`YeoroJeong`) | `ETC_task_assignment` | [algo2.py](YeoroJeong/ETC_task_assignment/algo2.py) |
+|  | `ETC_wall_break_escape` | [algo1_jeong.py](YeoroJeong/ETC_wall_break_escape/algo1_jeong.py) |
+| [김대원](DaewonKim/) (`DaewonKim`) | - | 등록된 풀이 없음 |
+| [이지은](CryingDitto/) (`CryingDitto`) | `5650` | [5650.cpp](CryingDitto/5650/5650.cpp) |
+|  | `5653` | [5653.cpp](CryingDitto/5653/5653.cpp) |
+| [임정현](JeonghyeonIm/) (`JeonghyeonIm`) | `SWEA_3304` | [3304.cpp](JeonghyeonIm/SWEA_3304/3304.cpp) |
+| [최수빈](ChoiSooBin/) (`ChoiSooBin`) | `Social_Distancing_Check` | [Social_Distancing_Check.cpp](ChoiSooBin/Social_Distancing_Check/Social_Distancing_Check.cpp) |
 
-| 스터디원 | wall_break_escape | task_assignment | 진행률 |
-|---|:---:|:---:|:---:|
-| 정현수 (`YeoroJeong`) | ✅ | ✅ | **2/2** |
-| 김대원 (`DaewonKim`) | ❌ | ❌ | **0/2** |
-| 이지은 (`CryingDitto`) | ❌ | ❌ | **0/2** |
-| 임정현 (`JeonghyeonIm`) | ❌ | ❌ | **0/2** |
-| 최수빈 (`ChoiSooBin`) | ❌ | ❌ | **0/2** |
+## 제출 방법
 
-## 제출 규칙
-
-- 브랜치: `week08/GitHub아이디`
-- PR 제목: `[W08] 이름 주간 풀이`
-- 제출 경로: `problems/week08/문제폴더/개인폴더/자유로운파일명.확장자`
-- 개인 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.
-- 다른 스터디원의 PR을 최소 1개 리뷰합니다.
+- `problems/week08/내개인폴더/문제식별폴더/풀이파일`에 제출합니다.
+- 문제식별폴더는 사이트와 문제 번호 또는 알아보기 쉬운 영문 이름으로 만듭니다.
+- PR 본문에 문제 제목·링크와 핵심 접근을 적습니다. 공통 문제 등록은 필요하지 않습니다.
 
 ## 추가 안내
 
-각자 문제 1개 이상 선정 후 풀이 설명. 공식 문제명·번호·링크와 제출 마감은 미확인. 설명형 제목과 내부 식별자를 사용합니다. 기간은 노션 8주차 기준입니다.
-
----
-
-`week.yml` 또는 풀이가 `main`에 반영되면 이 문서는 자동 갱신됩니다.
+각자 원하는 문제를 풀고 풀이를 공유합니다. 공통 지정 문제나 문제별 완료율은 없습니다.
