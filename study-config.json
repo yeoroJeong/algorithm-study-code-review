@@ -38,7 +38,11 @@
   "submission_extensions": [
     ".py",
     ".java",
-    ".cpp"
+    ".cpp",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp"
   ],
   "submission_layout": "problems/weekXX/problem/member/file"
 }

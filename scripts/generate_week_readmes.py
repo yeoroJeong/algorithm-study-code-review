@@ -287,7 +287,7 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
         f"- 브랜치: `{week_directory.name}/GitHub아이디`",
         f"- PR 제목: `[W{week_number:02d}] 이름 주간 풀이`",
         f"- 제출 경로: `problems/{week_directory.name}/문제폴더/개인폴더/자유로운파일명.확장자`",
-        "- 개인 폴더 안에 허용된 코드 파일이 하나라도 있으면 제출로 처리됩니다.",
+        "- 개인 폴더 안에 해당 주차에서 허용한 파일이 하나라도 있으면 제출로 처리됩니다.",
         "- 다른 스터디원의 PR을 최소 1개 리뷰합니다.",
         "",
     ])

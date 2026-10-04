@@ -140,6 +140,10 @@ def validate_source_file(path: Path, allowed_extensions: set[str]) -> tuple[list
         errors.append(str(error))
         return errors, warnings
 
+    weekly_extensions = week_config.get("submission", {}).get("extensions")
+    if weekly_extensions and extension not in {str(item).lower() for item in weekly_extensions}:
+        errors.append(f"{relative}: {week_folder}에서 허용되지 않은 확장자입니다: {extension}")
+
     free_choice = week_config.get("format") == "free_choice"
     member_folder = first_folder if free_choice else second_folder
     problem_folder = second_folder if free_choice else first_folder
