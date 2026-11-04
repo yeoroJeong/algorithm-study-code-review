@@ -1,0 +1,64 @@
+week: 10
+period:
+  start: '미정'
+  end: '미정'
+deadline: '미정'
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+  github: ''
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+  github: ''
+problems:
+  쉬움:
+  - site: Programmers
+    number: '250137'
+    title: '[PCCP 기출문제] 1번 / 붕대 감기'
+    folder: Programmers_250137
+    difficulty: Lv. 1
+    category: 구현
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/250137
+  중간:
+  - site: Programmers
+    number: '250136'
+    title: '[PCCP 기출문제] 2번 / 석유 시추'
+    folder: Programmers_250136
+    difficulty: Lv. 2
+    category: BFS · 연결 요소
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/250136
+  - site: Programmers
+    number: '250135'
+    title: '[PCCP 기출문제] 3번 / 아날로그 시계'
+    folder: Programmers_250135
+    difficulty: Lv. 2
+    category: 구현 · 시뮬레이션
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/250135
+  어려움:
+  - site: Programmers
+    number: '250134'
+    title: '[PCCP 기출문제] 4번 / 수레 움직이기'
+    folder: Programmers_250134
+    difficulty: Lv. 3
+    category: DFS · 백트래킹
+    url: https://school.programmers.co.kr/learn/courses/30/lessons/250134
+submission:
+  extensions:
+  - .png
+  - .jpg
+  - .jpeg
+  - .webp
+notes: |
+  풀이 결과 사진을 각 문제의 본인 폴더에 올립니다. 파일명은 자유입니다.
+  예: problems/week10/Programmers_250137/YeoroJeong/result.png
+  사진에는 본인이 푼 문제와 결과가 식별되도록 해주세요. PR 본문에는 접근 방법과 리뷰받고 싶은 부분을 공유합니다.
+
