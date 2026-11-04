@@ -121,7 +121,7 @@ def normalize_submission(config: dict[str, Any]) -> dict[str, Any]:
     extensions: set[str] = set()
     for value in extensions_raw:
         extension = str(value).strip().lower()
-        if extension and not extension.startswith("."):
+        if extension and extension != "*" and not extension.startswith("."):
             extension = "." + extension
         if extension:
             extensions.add(extension)
@@ -151,7 +151,7 @@ def has_submission(
     if not directory.is_dir():
         return False
     return any(
-        path.is_file() and path.suffix.lower() in extensions
+        path.is_file() and path.name != ".gitkeep" and ("*" in extensions or path.suffix.lower() in extensions)
         for path in directory.rglob("*")
     )
 
@@ -209,7 +209,7 @@ def render_readme(week_directory: Path, config: dict[str, Any]) -> str:
         for member in members:
             folder = member["folder"]
             member_directory = week_directory / folder
-            files = sorted(path for path in member_directory.rglob("*") if path.is_file() and path.suffix.lower() in extensions) if member_directory.is_dir() else []
+            files = sorted(path for path in member_directory.rglob("*") if path.is_file() and path.name != ".gitkeep" and ("*" in extensions or path.suffix.lower() in extensions)) if member_directory.is_dir() else []
             label = f"[{markdown_escape(member['name'])}]({folder}/) (`{markdown_escape(folder)}`)"
             if not files:
                 lines.append(f"| {label} | - | 등록된 풀이 없음 |")

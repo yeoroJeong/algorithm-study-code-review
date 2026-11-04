@@ -148,7 +148,7 @@ def parse_solution_changes(
             continue
 
         extension = path.suffix.lower()
-        if extension not in allowed_extensions:
+        if path.name == ".gitkeep" or ("*" not in allowed_extensions and extension not in allowed_extensions):
             continue
 
         if len(parts) < 5 or not parts[1].startswith("week"):
@@ -324,7 +324,10 @@ def validate_weekly_pr(
         allowed_extensions = normalize_extensions(study_config)
         weekly_extensions = week_config.get("submission", {}).get("extensions")
         if weekly_extensions:
-            allowed_extensions &= {str(extension).lower() for extension in weekly_extensions}
+            if "*" in weekly_extensions:
+                allowed_extensions = {"*"}
+            else:
+                allowed_extensions &= {str(extension).lower() for extension in weekly_extensions}
         free_choice = week_config.get("format") == "free_choice"
         solutions, malformed = parse_solution_changes(changes, allowed_extensions, free_choice)
         members = normalize_members(week_config)

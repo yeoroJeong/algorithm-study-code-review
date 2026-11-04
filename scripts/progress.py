@@ -44,7 +44,7 @@ def main() -> int:
             )
             for directory in directories:
                 if directory.is_dir() and any(
-                    path.is_file() and path.suffix.lower() in extensions
+                    path.is_file() and path.name != ".gitkeep" and ("*" in extensions or path.suffix.lower() in extensions)
                     for path in directory.rglob("*")
                 ):
                     count += 1

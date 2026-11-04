@@ -53,12 +53,9 @@ problems:
     url: https://school.programmers.co.kr/learn/courses/30/lessons/250134
 submission:
   extensions:
-  - .png
-  - .jpg
-  - .jpeg
-  - .webp
+  - "*"
 notes: |
-  풀이 결과 사진을 각 문제의 본인 폴더에 올립니다. 파일명은 자유입니다.
+  각 문제의 본인 폴더에 제출합니다. 파일명과 형식은 자유이며, .cpp를 포함한 소스 코드, 이미지, 문서 등 모든 확장자를 허용합니다.
   예: problems/week10/Programmers_250137/YeoroJeong/result.png
-  사진에는 본인이 푼 문제와 결과가 식별되도록 해주세요. PR 본문에는 접근 방법과 리뷰받고 싶은 부분을 공유합니다.
+  제출물에는 본인이 푼 문제와 풀이 또는 결과가 식별되도록 해주세요. PR 본문에는 접근 방법과 리뷰받고 싶은 부분을 공유합니다.
 

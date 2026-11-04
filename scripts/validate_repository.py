@@ -130,10 +130,6 @@ def validate_source_file(path: Path, allowed_extensions: set[str]) -> tuple[list
 
     week_folder, first_folder, second_folder = parts[1:4]
     extension = path.suffix.lower()
-    if extension not in allowed_extensions:
-        errors.append(f"{relative}: 허용되지 않은 확장자입니다: {extension}")
-        return errors, warnings
-
     try:
         week_config, members, problems = load_week_config(week_folder)
     except (ValueError, yaml.YAMLError) as error:
@@ -141,7 +137,9 @@ def validate_source_file(path: Path, allowed_extensions: set[str]) -> tuple[list
         return errors, warnings
 
     weekly_extensions = week_config.get("submission", {}).get("extensions")
-    if weekly_extensions and extension not in {str(item).lower() for item in weekly_extensions}:
+    if "*" not in (weekly_extensions or []) and extension not in allowed_extensions:
+        errors.append(f"{relative}: 허용되지 않은 확장자입니다: {extension}")
+    if weekly_extensions and "*" not in weekly_extensions and extension not in {str(item).lower() for item in weekly_extensions}:
         errors.append(f"{relative}: {week_folder}에서 허용되지 않은 확장자입니다: {extension}")
 
     free_choice = week_config.get("format") == "free_choice"
@@ -187,7 +185,11 @@ def main() -> int:
     code_files = [
         path for path in candidates
         if path.is_file()
-        and path.suffix.lower() in allowed_extensions
+        and (path.suffix.lower() in allowed_extensions or (
+            len(path.relative_to(ROOT).parts) >= 5
+            and path.name != ".gitkeep"
+            and "*" in load_week_config(path.relative_to(ROOT).parts[1])[0].get("submission", {}).get("extensions", [])
+        ))
         and path.relative_to(ROOT).parts[0] == "problems"
     ]
 
