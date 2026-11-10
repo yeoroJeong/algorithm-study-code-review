@@ -9,9 +9,9 @@ int n = 0;
 long long maxLevel = 0;
 long long minLevel = 0;
 
-// ³­ÀÌµµ, ¼Ò¿ä ½Ã°£Àº ¸ğµÎ ¾çÀÇ Á¤¼ö¸ç, ¼÷·Ãµµµµ ¾çÀÇ Á¤¼ö
+// ë‚œì´ë„, ì†Œìš” ì‹œê°„ì€ ëª¨ë‘ ì–‘ì˜ ì •ìˆ˜ë©°, ìˆ™ë ¨ë„ë„ ì–‘ì˜ ì •ìˆ˜
 // diff > level
-// diff-level¸¸Å­ Æ²¸°´Ù. + time_cur¸¸Å­ÀÇ ½Ã°£À» »ç¿ëÇÑ´Ù.
+// diff-levelë§Œí¼ í‹€ë¦°ë‹¤. + time_curë§Œí¼ì˜ ì‹œê°„ì„ ì‚¬ìš©í•œë‹¤.
 // (diff-level) * (time_cur + time_prev) + time_cur
 
 void binarySearch(int leftIdx, int rightIdx, vector<long long>& levels,
@@ -41,10 +41,10 @@ void binarySearch(int leftIdx, int rightIdx, vector<long long>& levels,
         }
         
     }
-    // ÇöÀç ¼öÇàÇÑ ·¹º§ÀÌ ½Ã°£ ³»¿¡ µé¾î¿Â´Ù -> ´õ ÀÛÀº ·¹º§À» °è»êÇØº»´Ù.
+    // í˜„ì¬ ìˆ˜í–‰í•œ ë ˆë²¨ì´ ì‹œê°„ ë‚´ì— ë“¤ì–´ì˜¨ë‹¤ -> ë” ì‘ì€ ë ˆë²¨ì„ ê³„ì‚°í•´ë³¸ë‹¤.
     if(totalTime <= limit)
     {
-        // ½Ã°£ ¾È¿¡ µé¾î¿Ô´Âµ¥ ÃÖ¼Ò ·¹º§º¸´Ù ÇöÀç ·¹º§ÀÌ ´õ ÀÛÀ¸¸é.
+        // ì‹œê°„ ì•ˆì— ë“¤ì–´ì™”ëŠ”ë° ìµœì†Œ ë ˆë²¨ë³´ë‹¤ í˜„ì¬ ë ˆë²¨ì´ ë” ì‘ìœ¼ë©´.
         if(minLevel > curLevel)
         {
             minLevel = curLevel;
@@ -52,7 +52,7 @@ void binarySearch(int leftIdx, int rightIdx, vector<long long>& levels,
         binarySearch(leftIdx, midIdx-1, levels, diffs, times, limit);
         
     }
-    // totalTime > limit ½Ã°£ ¾È¿¡ ¼öÇà ºÒ°¡. -> Å« ·¹º§À» ¼öÇàÇØº»´Ù
+    // totalTime > limit ì‹œê°„ ì•ˆì— ìˆ˜í–‰ ë¶ˆê°€. -> í° ë ˆë²¨ì„ ìˆ˜í–‰í•´ë³¸ë‹¤
     else 
     {
         binarySearch(midIdx+1, rightIdx,levels, diffs, times, limit);
@@ -62,12 +62,12 @@ void binarySearch(int leftIdx, int rightIdx, vector<long long>& levels,
 
 int solution(vector<int> diffs, vector<int> times, long long limit) {
     int answer = 0;
-    n = (int)diffs.size();      // ÆÛÁñ n°³
+    n = (int)diffs.size();      // í¼ì¦ nê°œ
     maxLevel = *max_element(diffs.begin(),diffs.end());
-    minLevel = maxLevel;      // ÃÊ±â ÃÖ¼Ò ¼÷·Ãµµ´Â ÃÖ»óÀ¸·Î ¼³Á¤.
+    minLevel = maxLevel;      // ì´ˆê¸° ìµœì†Œ ìˆ™ë ¨ë„ëŠ” ìµœìƒìœ¼ë¡œ ì„¤ì •.
 
-    // ÇöÀç °¡´ÉÇÑ maxLevelÀ» ±âÁØÀ¸·Î
-    // ÀÌÁø Å½»öÀ¸·Î Ã£´Â´Ù.
+    // í˜„ì¬ ê°€ëŠ¥í•œ maxLevelì„ ê¸°ì¤€ìœ¼ë¡œ
+    // ì´ì§„ íƒìƒ‰ìœ¼ë¡œ ì°¾ëŠ”ë‹¤.
     vector<long long> levels (maxLevel+1, 0);
     for(int i=0; i<(int)levels.size(); ++i)
     {

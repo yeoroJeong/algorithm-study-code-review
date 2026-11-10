@@ -8,20 +8,20 @@ using namespace std;
 int solution(vector<vector<int>> points, vector<vector<int>> routes) {
 	int robotCount = (int)routes.size();
 
-	// robotPaths[robot][time] = timeÃÊ¿¡ robotÀÌ ÀÖ´Â ÁÂÇ¥ {row, col}
+	// robotPaths[robot][time] = timeì´ˆì— robotì´ ìˆëŠ” ì¢Œí‘œ {row, col}
 	vector<vector<pair<int, int>>> robotPaths(robotCount);
 
 	for (int robot = 0; robot < robotCount; ++robot) {
-		// ---------- Ãâ¹ß ÁöÁ¡ ----------
-		int startPointId = routes[robot][0];		// Ãâ¹ß ÁöÁ¡ ¹øÈ£ (1ºÎÅÍ ½ÃÀÛ)
-		int startPointIndex = startPointId - 1;     // points º¤ÅÍ ÀÎµ¦½º (0ºÎÅÍ ½ÃÀÛ)
+		// ---------- ì¶œë°œ ì§€ì  ----------
+		int startPointId = routes[robot][0];		// ì¶œë°œ ì§€ì  ë²ˆí˜¸ (1ë¶€í„° ì‹œì‘)
+		int startPointIndex = startPointId - 1;     // points ë²¡í„° ì¸ë±ìŠ¤ (0ë¶€í„° ì‹œì‘)
 
-		// ½ÃÀÛ ÁöÁ¡¿¡ ´ëÇÑ ÁÂÇ¥
+		// ì‹œì‘ ì§€ì ì— ëŒ€í•œ ì¢Œí‘œ
 		int curRow = points[startPointIndex][0];
 		int curCol = points[startPointIndex][1];
 		robotPaths[robot].push_back({ curRow, curCol });   // time = 0
 
-		// ---------- ´ÙÀ½ ¸ñÇ¥ ÁöÁ¡µéÀ» Â÷·Ê·Î ÀÌµ¿ ----------
+		// ---------- ë‹¤ìŒ ëª©í‘œ ì§€ì ë“¤ì„ ì°¨ë¡€ë¡œ ì´ë™ ----------
 		int routeLength = (int)routes[robot].size();
 		for (int routeOrder = 1; routeOrder < routeLength; ++routeOrder) {
 			int targetPointId = routes[robot][routeOrder];
@@ -30,7 +30,7 @@ int solution(vector<vector<int>> points, vector<vector<int>> routes) {
 			int targetRow = points[targetPointIndex][0];
 			int targetCol = points[targetPointIndex][1];
 
-			// row ÀÌµ¿À» ¸ÕÀú
+			// row ì´ë™ì„ ë¨¼ì €
 			while (curRow != targetRow) {
 				if (targetRow > curRow) {
 					curRow++;
@@ -41,7 +41,7 @@ int solution(vector<vector<int>> points, vector<vector<int>> routes) {
 				robotPaths[robot].push_back({ curRow, curCol });
 			}
 
-			// ±×´ÙÀ½ col ÀÌµ¿
+			// ê·¸ë‹¤ìŒ col ì´ë™
 			while (curCol != targetCol) {
 				if (targetCol > curCol) {
 					curCol++;
@@ -55,21 +55,21 @@ int solution(vector<vector<int>> points, vector<vector<int>> routes) {
 	}
 
 
-	// °¡Àå ±ä °Å¸®¸¦ °¡Áø ·Îº¿ÀÇ ÀÌµ¿ ½Ã°£ ¸¸Å­ ¼³Á¤.
+	// ê°€ì¥ ê¸´ ê±°ë¦¬ë¥¼ ê°€ì§„ ë¡œë´‡ì˜ ì´ë™ ì‹œê°„ ë§Œí¼ ì„¤ì •.
 	int maxTime = 0;
 	for (auto& path : robotPaths) {
 		maxTime = max(maxTime, (int)path.size());
 	}
 
-	// robotsAtCell[row][col] = ÇöÀç ½Ã°£¿¡ (row, col)¿¡ ÀÖ´Â ·Îº¿ ¼ö
+	// robotsAtCell[row][col] = í˜„ì¬ ì‹œê°„ì— (row, col)ì— ìˆëŠ” ë¡œë´‡ ìˆ˜
 	vector<vector<int>> robotsAtCell(101, vector<int>(101, 0));
 	int dangerCount = 0;
 
 	for (int time = 0; time < maxTime; ++time) {
-		// 1) ÇöÀç ½Ã°£ÀÇ ·Îº¿ À§Ä¡¸¦ ±â·ÏÇÏ°í À§Çè »óÈ²À» ¼¾´Ù
+		// 1) í˜„ì¬ ì‹œê°„ì˜ ë¡œë´‡ ìœ„ì¹˜ë¥¼ ê¸°ë¡í•˜ê³  ìœ„í—˜ ìƒí™©ì„ ì„¼ë‹¤
 		for (int robot = 0; robot < robotCount; ++robot) {
 
-			// ÀÌ¹Ì µµÂøÇß´Ù¸é
+			// ì´ë¯¸ ë„ì°©í–ˆë‹¤ë©´
 			if (time >= robotPaths[robot].size()) 
 				continue;   
 		
@@ -83,9 +83,9 @@ int solution(vector<vector<int>> points, vector<vector<int>> routes) {
 			}
 		}
 
-		// 2) ±â·ÏÇÑ Ä­¸¸ 0À¸·Î µÇµ¹¸°´Ù
+		// 2) ê¸°ë¡í•œ ì¹¸ë§Œ 0ìœ¼ë¡œ ë˜ëŒë¦°ë‹¤
 		for (int robot = 0; robot < robotCount; ++robot) {
-			// ÀÌ¹Ì µµÂøÇÑ ·Îº¿Àº Á¦¿Ü
+			// ì´ë¯¸ ë„ì°©í•œ ë¡œë´‡ì€ ì œì™¸
 			if (time >= (int)robotPaths[robot].size()) {
 				continue;
 			}

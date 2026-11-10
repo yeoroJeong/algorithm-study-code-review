@@ -37,7 +37,7 @@ string solution(string video_len,string pos,string op_start,string op_end,vector
     int opStart = toSec(op_start);
     int opEnd = toSec(op_end);
 
-    // ¸í·É ½ÇÇà Àü¿¡ ÇöÀç À§Ä¡ °Ë»ç
+    // ëª…ë ¹ ì‹¤í–‰ ì „ì— í˜„ì¬ ìœ„ì¹˜ ê²€ì‚¬
     if(opStart <= cur && cur <= opEnd)
     {
         cur = opEnd;
@@ -54,7 +54,7 @@ string solution(string video_len,string pos,string op_start,string op_end,vector
             cur = min(videoLen, cur + 10);
         }
 
-        // ¸í·É ½ÇÇà ÈÄ ¿ÀÇÁ´× °Ë»ç
+        // ëª…ë ¹ ì‹¤í–‰ í›„ ì˜¤í”„ë‹ ê²€ì‚¬
         if(opStart <= cur && cur <= opEnd)
         {
             cur = opEnd;
