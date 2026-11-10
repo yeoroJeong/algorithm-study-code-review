@@ -27,12 +27,12 @@ git switch main
 git pull origin main
 
 # 2. 이번 주 개인 브랜치 만들기
-git switch -c week07/github-id
+git switch -c week11/github-id
 
 # 3. 풀이 후 저장
 git add .
-git commit -m "[W07][SWEA-OTT] 풀이 추가"
-git push -u origin week07/github-id
+git commit -m "[W11][CodeTree-baggage-conveyor-belt] 풀이 추가"
+git push -u origin week11/github-id
 ```
 
 GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
@@ -53,16 +53,20 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 | [6주차](problems/week06/README.md) | Pro 타워디펜스게임, Clockwise City | 구현, 그래프 탐색, 최단 경로, 상태 설계 | 보완 중 |
 | [7주차](problems/week07/README.md) | SWEA OTT, 일타싸피 학습 | Pro 시험 대비, 자료구조, 각도·경로·파워 설계 | 진행 중 |
 | [8주차](problems/week08/README.md) | 각자 선택한 문제 풀이·공유 | 자유 풀이 | 제출물 정리 |
+| [11주차](problems/week11/README.md) | 수하물 컨베이어 벨트 | 구현, 시뮬레이션 | 진행 중 |
+| [10주차](problems/week10/README.md) | PCCP 기출 1~4번 | 구현, BFS, 시뮬레이션, 백트래킹 | 이전 주차 |
 | [9주차](problems/week09/README.md) | PCCP 기출 1~4번 | 구현, 이분 탐색, 시뮬레이션 | 진행 예정 |
 
 ---
 
 ## 📅 현재 주차
 
-**9주차**는 PCCP 기출문제 1~4번을 풉니다. [문제 목록과 개인별 사진 제출 폴더](problems/week09/README.md)를 확인하세요.
+**11주차**는 코드트리의 **수하물 컨베이어 벨트**(삼성 2026 하반기 오전 1번)를 풉니다. [문제 목록과 개인별 제출 폴더](problems/week11/README.md)를 확인하세요. 진행 기간과 제출 마감은 미정입니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
+| 11주차 | [`problems/week11`](problems/week11/README.md) | 진행 중 |
+| 10주차 | [`problems/week10`](problems/week10/README.md) | 이전 주차 |
 | 9주차 | [`problems/week09`](problems/week09/README.md) | 풀이 사진 제출 예정 |
 | 8주차 | [`problems/week08`](problems/week08/README.md) | 자유 풀이 공유 |
 | 7주차 | [`problems/week07`](problems/week07/README.md) | 이전 주차 |
