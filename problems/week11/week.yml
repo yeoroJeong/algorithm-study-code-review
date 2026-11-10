@@ -1,0 +1,41 @@
+week: 11
+period:
+  start: 미정
+  end: 미정
+deadline: 미정
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+  github: ''
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+  github: ''
+problems:
+- site: CodeTree
+  number: baggage-conveyor-belt
+  title: 수하물 컨베이어 벨트
+  folder: CodeTree_baggage-conveyor-belt
+  difficulty: 미표기
+  category: 구현 · 시뮬레이션
+  url: https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/baggage-conveyor-belt/description
+submission:
+  extensions:
+  - '*'
+notes: '삼성 2026 하반기 오전 1번 기출문제입니다.
+
+  각 문제의 본인 폴더에 제출합니다. 파일명과 형식은 자유이며, 소스 코드, 이미지, 문서 등 모든 확장자를 허용합니다.
+
+  예: problems/week11/CodeTree_baggage-conveyor-belt/YeoroJeong/solution.cpp
+
+  PR 본문에는 접근 방법과 리뷰받고 싶은 부분을 공유합니다.
+
+  '
