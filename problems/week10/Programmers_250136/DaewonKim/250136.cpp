@@ -5,30 +5,30 @@
 
 using namespace std;
 /*
-    °¡·Î : m
-    ¼¼·Î : n
+    ê°€ë¡œ : m
+    ì„¸ë¡œ : n
 
-    ¼öÁ÷À¸·Î ´Ü 1°³ÀÇ ½ÃÃß°ü -> °¡Àå ¸¹Àº ¼®À¯¸¦ »ÌÀ» ¼ö ÀÖ´Â À§Ä¡
+    ìˆ˜ì§ìœ¼ë¡œ ë‹¨ 1ê°œì˜ ì‹œì¶”ê´€ -> ê°€ì¥ ë§ì€ ì„ìœ ë¥¼ ë½‘ì„ ìˆ˜ ìˆëŠ” ìœ„ì¹˜
 
-    Å©±â ¹è¿­ 
+    í¬ê¸° ë°°ì—´ 
     board[n][m]
     
-    ½ÃÃß°üÀ» ²ÈÀ» ¶§, ºÙ¾îÀÖ´Â ¼®À¯ + Áö³ª°¡´Â ¼®À¯ ºÎºĞÀº ÀüºÎ ½ÃÃß °¡´É
+    ì‹œì¶”ê´€ì„ ê½‚ì„ ë•Œ, ë¶™ì–´ìˆëŠ” ì„ìœ  + ì§€ë‚˜ê°€ëŠ” ì„ìœ  ë¶€ë¶„ì€ ì „ë¶€ ì‹œì¶” ê°€ëŠ¥
     -> bfs
-    + ¹æÇâ °í·Á
+    + ë°©í–¥ ê³ ë ¤
     
     bfs
 
-    1ÀÎ °÷¿¡¼­ºÎÅÍ bfs¸¦ µé¾î°¡¾ßÇÔ.
+    1ì¸ ê³³ì—ì„œë¶€í„° bfsë¥¼ ë“¤ì–´ê°€ì•¼í•¨.
 */
 int solution(vector<vector<int>> land) {
     int answer = 0;
 
-    int n = (int)land.size();      // Çà
-    int m = (int)land[0].size();   // ¿­
+    int n = (int)land.size();      // í–‰
+    int m = (int)land[0].size();   // ì—´
 
     vector<vector<bool>> visited(n, vector<bool>(m, false));
-    vector<int> petroleums(m, 0);  // °¢ ¿­¿¡¼­ ¾òÀ» ¼ö ÀÖ´Â ¼®À¯·®
+    vector<int> petroleums(m, 0);  // ê° ì—´ì—ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ì„ìœ ëŸ‰
 
     int dx[4] = {1, -1, 0, 0};
     int dy[4] = {0, 0, 1, -1};
@@ -39,11 +39,11 @@ int solution(vector<vector<int>> land) {
     {
         for(int row = 0; row < n; ++row)
         {
-            // ¾ÆÁ÷ ¹æ¹®ÇÏÁö ¾ÊÀº ¼®À¯ µ¢¾î¸®¿¡¼­¸¸ BFS ½ÃÀÛ
+            // ì•„ì§ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì„ìœ  ë©ì–´ë¦¬ì—ì„œë§Œ BFS ì‹œì‘
             if(land[row][col] == 1 && !visited[row][col])
             {
-                int oilSize = 0;                 // ÇöÀç ¼®À¯ µ¢¾î¸® Å©±â
-                vector<bool> usedCol(m, false);  // ÇöÀç µ¢¾î¸®°¡ °ÉÄ£ ¿­ Ã¼Å©
+                int oilSize = 0;                 // í˜„ì¬ ì„ìœ  ë©ì–´ë¦¬ í¬ê¸°
+                vector<bool> usedCol(m, false);  // í˜„ì¬ ë©ì–´ë¦¬ê°€ ê±¸ì¹œ ì—´ ì²´í¬
 
                 q.push({row, col});
                 visited[row][col] = true;
@@ -61,7 +61,7 @@ int solution(vector<vector<int>> land) {
                         int nextX = x + dx[k];
                         int nextY = y + dy[k];
 
-                        // ¹üÀ§ °Ë»ç¸¦ ¸ÕÀú ÇØ¾ß ÇÔ
+                        // ë²”ìœ„ ê²€ì‚¬ë¥¼ ë¨¼ì € í•´ì•¼ í•¨
                         if(nextX >= 0 && nextX < n &&
                            nextY >= 0 && nextY < m &&
                            land[nextX][nextY] == 1 &&
@@ -73,7 +73,7 @@ int solution(vector<vector<int>> land) {
                     }
                 }
 
-                // ÇöÀç ¼®À¯ µ¢¾î¸®°¡ °ÉÄ£ ¸ğµç ¿­¿¡ µ¢¾î¸® Å©±â Ãß°¡
+                // í˜„ì¬ ì„ìœ  ë©ì–´ë¦¬ê°€ ê±¸ì¹œ ëª¨ë“  ì—´ì— ë©ì–´ë¦¬ í¬ê¸° ì¶”ê°€
                 for(int c = 0; c < m; ++c)
                 {
                     if(usedCol[c])

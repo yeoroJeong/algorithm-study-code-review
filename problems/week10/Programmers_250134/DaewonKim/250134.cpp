@@ -98,7 +98,7 @@ int solution(vector<vector<int>> maze)
         vector<pair<int, int>> redNextList;
         vector<pair<int, int>> blueNextList;
 
-        // »¡°£ ¼ö·¹°¡ ÀÌ¹Ì µµÂøÇß´Ù¸é ÇöÀç À§Ä¡¿¡ °íÁ¤
+        // ë¹¨ê°„ ìˆ˜ë ˆê°€ ì´ë¯¸ ë„ì°©í–ˆë‹¤ë©´ í˜„ì¬ ìœ„ì¹˜ì— ê³ ì •
         if(redArrived)
         {
             redNextList.push_back({cur.redX, cur.redY});
@@ -130,7 +130,7 @@ int solution(vector<vector<int>> maze)
             }
         }
 
-        // ÆÄ¶õ ¼ö·¹°¡ ÀÌ¹Ì µµÂøÇß´Ù¸é ÇöÀç À§Ä¡¿¡ °íÁ¤
+        // íŒŒë€ ìˆ˜ë ˆê°€ ì´ë¯¸ ë„ì°©í–ˆë‹¤ë©´ í˜„ì¬ ìœ„ì¹˜ì— ê³ ì •
         if(blueArrived)
         {
             blueNextList.push_back({cur.blueX, cur.blueY});
@@ -172,13 +172,13 @@ int solution(vector<vector<int>> maze)
                 int nextBlueX = blueNext.first;
                 int nextBlueY = blueNext.second;
 
-                // µÎ ¼ö·¹°¡ °°Àº Ä­À¸·Î ÀÌµ¿ÇÏ¸é ¾È µÊ
+                // ë‘ ìˆ˜ë ˆê°€ ê°™ì€ ì¹¸ìœ¼ë¡œ ì´ë™í•˜ë©´ ì•ˆ ë¨
                 if(nextRedX == nextBlueX && nextRedY == nextBlueY)
                 {
                     continue;
                 }
 
-                // µÎ ¼ö·¹°¡ ¼­·Î À§Ä¡¸¦ ¹Ù²Ù¸é ¾È µÊ
+                // ë‘ ìˆ˜ë ˆê°€ ì„œë¡œ ìœ„ì¹˜ë¥¼ ë°”ê¾¸ë©´ ì•ˆ ë¨
                 if(nextRedX == cur.blueX && nextRedY == cur.blueY &&
                    nextBlueX == cur.redX && nextBlueY == cur.redY)
                 {

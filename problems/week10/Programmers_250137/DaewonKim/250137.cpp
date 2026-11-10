@@ -5,38 +5,38 @@
 
 using namespace std;
 /*
-    tÃÊ µ¿¾È ºØ´ë°¨±â
-    1ÃÊ¸¶´Ù x¸¸Å­ È¸º¹
-    tÃÊ¸¦ ´Ù °¨À¸¸é y¸¸Å­ Ã¼·Â Ãß°¡·Î È¸º¹
+    tì´ˆ ë™ì•ˆ ë¶•ëŒ€ê°ê¸°
+    1ì´ˆë§ˆë‹¤ xë§Œí¼ íšŒë³µ
+    tì´ˆë¥¼ ë‹¤ ê°ìœ¼ë©´ yë§Œí¼ ì²´ë ¥ ì¶”ê°€ë¡œ íšŒë³µ
 
-    ±â¼ú »ç¿ë Áß °ø°İ ¹Ş -> ±â¼ú Ãë¼Ò
-    °ø°İ ´çÇÏ´Â ¼ø°£ Ã¼·Â È¸º¹ X
-    °ø°İ ´çÇØ ±â¼ú Ãë¼Ò or ±â¼úÀÌ ³¡³ª¸é ¹Ù·Î ºØ´ë °¨±â ´Ù½Ã »ç¿ë -> ¿¬¼Ó ½Ã°£ 0
+    ê¸°ìˆ  ì‚¬ìš© ì¤‘ ê³µê²© ë°› -> ê¸°ìˆ  ì·¨ì†Œ
+    ê³µê²© ë‹¹í•˜ëŠ” ìˆœê°„ ì²´ë ¥ íšŒë³µ X
+    ê³µê²© ë‹¹í•´ ê¸°ìˆ  ì·¨ì†Œ or ê¸°ìˆ ì´ ëë‚˜ë©´ ë°”ë¡œ ë¶•ëŒ€ ê°ê¸° ë‹¤ì‹œ ì‚¬ìš© -> ì—°ì† ì‹œê°„ 0
     
     bandage[0] = t
     bandage[1] = x
     bandage[2] = y
-    health = ÃÖ´ëÃ¼·Â
+    health = ìµœëŒ€ì²´ë ¥
 
-    attacks - °ø°İ ½Ã°£À» ±âÁØÀ¸·Î ¿À¸§Â÷¼ø Á¤·ÄµÊ.
-    attacks[0] = °ø°İ½Ã°£
-    attacks[1] = ÇÇÇØ·®
+    attacks - ê³µê²© ì‹œê°„ì„ ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ë¨.
+    attacks[0] = ê³µê²©ì‹œê°„
+    attacks[1] = í”¼í•´ëŸ‰
 
 
-    Ãâ·Â: ¸ğµç °ø°İÀÌ ³¡³­ Á÷ÈÄ ³²Àº Ã¼·Â
-    Á×À¸¸é -1
-    ½Ã°£ º¹Àâµµ : O(n^2) °¡´É
+    ì¶œë ¥: ëª¨ë“  ê³µê²©ì´ ëë‚œ ì§í›„ ë‚¨ì€ ì²´ë ¥
+    ì£½ìœ¼ë©´ -1
+    ì‹œê°„ ë³µì¡ë„ : O(n^2) ê°€ëŠ¥
 */
 int solution(vector<int> bandage, int health, vector<vector<int>> attacks) {
     int answer = 0;
-    // ÁøÇà ½Ã°£
+    // ì§„í–‰ ì‹œê°„
     int curTime = 0;
 
-    int t = bandage[0];     // ºØ´ë °¨±â ½Ã°£
-    int x = bandage[1];     // 1ÃÊ ´ç Ã¼·Â È¸º¹
-    int y = bandage[2];     // Ãß°¡ Ã¼·Â È¸º¹
-    int curHealth = health; // ÇöÀç Ã¼·Â·®
-    int skillTime = 0;       // °ø°İ¹ŞÀº ½Ã°£ Ã¼Å©
+    int t = bandage[0];     // ë¶•ëŒ€ ê°ê¸° ì‹œê°„
+    int x = bandage[1];     // 1ì´ˆ ë‹¹ ì²´ë ¥ íšŒë³µ
+    int y = bandage[2];     // ì¶”ê°€ ì²´ë ¥ íšŒë³µ
+    int curHealth = health; // í˜„ì¬ ì²´ë ¥ëŸ‰
+    int skillTime = 0;       // ê³µê²©ë°›ì€ ì‹œê°„ ì²´í¬
     queue<pair<int,int>> q;
     for(auto& it : attacks)
     {
@@ -46,7 +46,7 @@ int solution(vector<int> bandage, int health, vector<vector<int>> attacks) {
     while(!q.empty())
     {
         auto it = q.front();
-        // °ø°İ½Ã°£ÀÌ ¾ÆÁ÷ ¾Æ´Ï¶ó¸é
+        // ê³µê²©ì‹œê°„ì´ ì•„ì§ ì•„ë‹ˆë¼ë©´
         if(curTime < it.first)
         {
             curHealth += x;
@@ -64,7 +64,7 @@ int solution(vector<int> bandage, int health, vector<vector<int>> attacks) {
             skillTime = 0;
         }
         
-        // ÃÖ´ë Ã¼·Â Á¦ÇÑ
+        // ìµœëŒ€ ì²´ë ¥ ì œí•œ
         if(curHealth >= health)
             curHealth = health;
 
