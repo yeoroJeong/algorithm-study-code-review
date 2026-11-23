@@ -1,0 +1,5 @@
+root = true
+
+# 모든 파일을 UTF-8(BOM 없음)로 저장
+[*]
+charset = utf-8
