@@ -27,12 +27,12 @@ git switch main
 git pull origin main
 
 # 2. 이번 주 개인 브랜치 만들기
-git switch -c week12/github-id
+git switch -c week13/github-id
 
 # 3. 풀이 후 저장
 git add .
-git commit -m "[W12][CodingRoom-01] 풀이 추가"
-git push -u origin week12/github-id
+git commit -m "[W13][CodeTree-sequential-movement-of-numbers] 풀이 추가"
+git push -u origin week13/github-id
 ```
 
 GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
@@ -53,7 +53,8 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 | [6주차](problems/week06/README.md) | Pro 타워디펜스게임, Clockwise City | 구현, 그래프 탐색, 최단 경로, 상태 설계 | 보완 중 |
 | [7주차](problems/week07/README.md) | SWEA OTT, 일타싸피 학습 | Pro 시험 대비, 자료구조, 각도·경로·파워 설계 | 진행 중 |
 | [8주차](problems/week08/README.md) | 각자 선택한 문제 풀이·공유 | 자유 풀이 | 제출물 정리 |
-| [12주차](problems/week12/README.md) | 음식점의 하루 수익, 좋은 과일 정렬하기, 이동 비용으로 스택 복원하기 | 구현, 정렬, 스택 | 진행 중 |
+| [13주차](problems/week13/README.md) | 코드트리 특강 3회차 본 수업 3문제와 과제 5문제 | 격자 시뮬레이션 | 진행 중 |
+| [12주차](problems/week12/README.md) | 음식점의 하루 수익, 좋은 과일 정렬하기, 이동 비용으로 스택 복원하기 | 구현, 정렬, 스택 | 이전 주차 |
 | [11주차](problems/week11/README.md) | 수하물 컨베이어 벨트 | 구현, 시뮬레이션 | 이전 주차 |
 | [10주차](problems/week10/README.md) | PCCP 기출 1~4번 | 구현, BFS, 시뮬레이션, 백트래킹 | 이전 주차 |
 | [9주차](problems/week09/README.md) | PCCP 기출 1~4번 | 구현, 이분 탐색, 시뮬레이션 | 진행 예정 |
@@ -62,11 +63,12 @@ GitHub에서 Pull Request를 만들고 템플릿을 작성하면 됩니다.
 
 ## 📅 현재 주차
 
-**12주차**는 [코딩룸](https://study-coding-room-1120.sbyy77in.chatgpt.site/)의 문제 세 개를 풉니다. [문제 목록과 개인별 제출 폴더](problems/week12/README.md)를 확인하세요. 진행 기간과 제출 마감은 미정입니다.
+**13주차**는 11월 23일부터 29일까지 코드트리 특강 3회차의 본 수업 4~6번과 과제 1~5번을 풉니다. [8문제와 개인별 제출 폴더](problems/week13/README.md)를 확인하세요. 제출 마감은 미정입니다.
 
 | 주차 | 문제·풀이 폴더 | 진행 상태 |
 |---|---|---|
-| 12주차 | [`problems/week12`](problems/week12/README.md) | 진행 중 |
+| 13주차 | [`problems/week13`](problems/week13/README.md) | 진행 중 |
+| 12주차 | [`problems/week12`](problems/week12/README.md) | 이전 주차 |
 | 11주차 | [`problems/week11`](problems/week11/README.md) | 이전 주차 |
 | 10주차 | [`problems/week10`](problems/week10/README.md) | 이전 주차 |
 | 9주차 | [`problems/week09`](problems/week09/README.md) | 풀이 사진 제출 예정 |
