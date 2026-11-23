@@ -15,11 +15,11 @@
 
 | 스터디원 | baggage-conveyor-belt | 진행률 |
 |---|:---:|:---:|
-| 정현수 (`YeoroJeong`) | ❌ | **0/1** |
-| 김대원 (`DaewonKim`) | ❌ | **0/1** |
-| 이지은 (`CryingDitto`) | ❌ | **0/1** |
-| 임정현 (`JeonghyeonIm`) | ❌ | **0/1** |
-| 최수빈 (`ChoiSooBin`) | ❌ | **0/1** |
+| 정현수 (`YeoroJeong`) | ✅ | **1/1** |
+| 김대원 (`DaewonKim`) | ✅ | **1/1** |
+| 이지은 (`CryingDitto`) | ✅ | **1/1** |
+| 임정현 (`JeonghyeonIm`) | ✅ | **1/1** |
+| 최수빈 (`ChoiSooBin`) | ✅ | **1/1** |
 
 ## 제출 규칙
 
