@@ -22,46 +22,46 @@ def search(x, y, targetX, targetY, dir, jewelCount) :
             else :
                 break
 
-                nx = x + dx[dir]
-                ny = y + dy[dir]
+        nx = x + dx[dir]
+        ny = y + dy[dir]
 
-                if nx >= sizeN or nx < 0 or ny >= sizeN or ny < 0:
-dir = (dir + 1) % 4
-rotCnt += 1
-                else:
-if dir == 0 and ny > targetY:
-if nx < targetX :
-    dir = (dir + 1) % 4
-    rotCnt += 1
-    elif dir == 1 and nx > targetX :
-    if ny > targetY:
-dir = (dir + 1) % 4
-rotCnt += 1
-elif dir == 2 and ny < targetY :
-    if nx > targetX :
-        dir = (dir + 1) % 4
-        rotCnt += 1
-        elif dir == 3 and nx < targetX :
-        if ny < targetY :
+        if nx >= sizeN or nx < 0 or ny >= sizeN or ny < 0:
             dir = (dir + 1) % 4
             rotCnt += 1
+        else:
+            if dir == 0 and ny > targetY:
+                if nx < targetX :
+                    dir = (dir + 1) % 4
+                    rotCnt += 1
+            elif dir == 1 and nx > targetX :
+                if ny > targetY:
+                    dir = (dir + 1) % 4
+                    rotCnt += 1
+            elif dir == 2 and ny < targetY :
+                if nx > targetX :
+                    dir = (dir + 1) % 4
+                    rotCnt += 1
+            elif dir == 3 and nx < targetX :
+                if ny < targetY :
+                    dir = (dir + 1) % 4
+                    rotCnt += 1
 
-            x += dx[dir]
-            y += dy[dir]
+        x += dx[dir]
+        y += dy[dir]
 
-            return rotCnt
+    return rotCnt
 
-            T = int(input())
-            for tc in range(T) :
-                sizeN = int(input())
-                mapToMove = [list(map(int, input().split())) for _ in range(sizeN)]
-                jewels = {}
-                jCnt = 0
-                for i in range(sizeN) :
-                    for j in range(sizeN) :
-                        if mapToMove[i][j] > 0:
-jewels[mapToMove[i][j]] = (i, j)
-jCnt += 1
+T = int(input())
+for tc in range(T) :
+    sizeN = int(input())
+    mapToMove = [list(map(int, input().split())) for _ in range(sizeN)]
+    jewels = {}
+    jCnt = 0
+    for i in range(sizeN) :
+        for j in range(sizeN) :
+            if mapToMove[i][j] > 0:
+                jewels[mapToMove[i][j]] = (i, j)
+                jCnt += 1
 
-rotCnt = search(0, 0, jewels[1][0], jewels[1][1], 0, 0)
-print(f"#{tc+1} {rotCnt}")
+    rotCnt = search(0, 0, jewels[1][0], jewels[1][1], 0, 0)
+    print(f"#{tc+1} {rotCnt}")
