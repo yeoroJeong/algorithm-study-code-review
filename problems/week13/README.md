@@ -22,10 +22,10 @@
 
 | 스터디원 | move-to-max-adjacent-cell-simultaneously | sequential-movement-of-numbers | merge-marbles | sequential-movement-of-stacked-numbers | collision-experiment-with-wall | roll-a-dice | snake-loves-apples | marble-movement | 진행률 |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 정현수 (`YeoroJeong`) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **0/8** |
-| 김대원 (`DaewonKim`) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **0/8** |
-| 이지은 (`CryingDitto`) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **0/8** |
-| 임정현 (`JeonghyeonIm`) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **0/8** |
+| 정현수 (`YeoroJeong`) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | **8/8** |
+| 김대원 (`DaewonKim`) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | **8/8** |
+| 이지은 (`CryingDitto`) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **7/8** |
+| 임정현 (`JeonghyeonIm`) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | **8/8** |
 | 최수빈 (`ChoiSooBin`) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | **0/8** |
 
 ## 제출 규칙
