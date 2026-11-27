@@ -1,0 +1,63 @@
+week: 14
+period:
+  start: '2026-11-30'
+  end: '2026-12-06'
+deadline: 미정
+members:
+- folder: YeoroJeong
+  name: 정현수
+  github: yeoroJeong
+- folder: DaewonKim
+  name: 김대원
+  github: ''
+- folder: CryingDitto
+  name: 이지은
+  github: CryingDitto
+- folder: JeonghyeonIm
+  name: 임정현
+  github: JeonghyeonIm
+- folder: ChoiSooBin
+  name: 최수빈
+  github: ''
+problems:
+- site: BOJ
+  number: '17413'
+  title: 단어 뒤집기 2
+  folder: BOJ_17413
+  difficulty: 미표기
+  category: 문자열, 스택
+  url: https://acmicpc.net/problem/17413
+- site: BOJ
+  number: '4949'
+  title: 균형잡힌 세상
+  folder: BOJ_4949
+  difficulty: 미표기
+  category: 문자열, 스택
+  url: https://acmicpc.net/problem/4949
+- site: BOJ
+  number: '2504'
+  title: 괄호의 값
+  folder: BOJ_2504
+  difficulty: 미표기
+  category: 스택, 괄호식 계산
+  url: https://acmicpc.net/problem/2504
+- site: Programmers
+  number: '42584'
+  title: 주식가격
+  folder: Programmers_42584
+  difficulty: Lv. 2
+  category: 단조 스택
+  url: https://school.programmers.co.kr/learn/courses/30/lessons/42584
+- site: BOJ
+  number: '10828'
+  title: 스택
+  folder: BOJ_10828
+  difficulty: 미표기
+  category: 자료구조, 스택
+  url: https://acmicpc.net/problem/10828
+submission:
+  extensions: ['*']
+notes: |
+  2026 IT 빅테크 코딩테스트 특강 (8차수) 4회차 과제에 대응하는 다섯 문제를 모두 필수로 풉니다. 입출력 형식과 예제는 각 사이트의 문제 설명을 따릅니다.
+  문제 순서는 특강의 단어 뒤집기, 문자열 검사기, 괄호열의 값, 가격이 떨어지지 않은 시간, 정수 명령 처리 순서입니다.
+  각 문제의 본인 폴더에 풀이를 제출하고, 주간 PR에 접근 방법과 리뷰받고 싶은 부분을 적어 주세요.
